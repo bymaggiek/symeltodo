@@ -48,7 +48,7 @@ body {
   justify-content: space-between;
 }
 
-.firstRow span {
+.firstRow > span {
   margin: 1rem 1.5rem;
   font-weight: bold;
   font-size: 1.5rem;
@@ -56,7 +56,7 @@ body {
   text-align: center;
 }
 
-.firstRow button {
+.firstRow > button {
   background-color: red;
   height: 2rem;
   width: 2rem;
@@ -64,7 +64,7 @@ body {
   cursor: pointer;
 }
 
-.firstRow button:hover {
+.firstRow > button:hover {
   background-color: rgb(255, 52, 52);
 }
 
@@ -109,7 +109,7 @@ body {
   color: #2bff09;
 }
 .progress:hover {
-  color: #76f862;
+  color: #94fc84;
 }
 
 .done {
