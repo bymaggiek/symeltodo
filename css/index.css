@@ -1,0 +1,118 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #d7f1f4;
+}
+
+.addCardSection {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.playwith {
+  margin: 3rem 10rem;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-items: center;
+  flex-basis: 33%;
+}
+
+/* Single card css */
+.cards {
+  max-width: 350px;
+  height: 400px;
+  background-color: #f6f2f6;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10%;
+  margin: 2rem 3rem;
+}
+
+.firstRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.firstRow span {
+  margin: 1rem 1.5rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.firstRow button {
+  background-color: red;
+  height: 2rem;
+  width: 2rem;
+  margin: 1rem 1.7rem;
+  cursor: pointer;
+}
+
+.firstRow button:hover {
+  background-color: rgb(255, 52, 52);
+}
+
+.date,
+.title {
+  font-size: 1rem;
+  margin-left: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.description {
+  max-width: 90%;
+  max-height: 8rem;
+  height: 8rem;
+  margin: 1.5rem 5%;
+  font-size: 0.85rem;
+  font-style: italic;
+  overflow: hidden auto;
+  overflow-wrap: normal;
+}
+
+.status {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0.25rem 1.5rem;
+  background-color: #f6f2f6;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.assigned {
+  margin: 0.5rem 1.5rem;
+  font-weight: bold;
+}
+
+/* Five colors for five status */
+.progress {
+  color: #2bff09;
+}
+
+.done {
+  color: #000000;
+}
+
+.todo {
+  color: #09f0ff;
+}
+
+.roadblock {
+  color: #ff4b4b;
+}
+
+.review {
+  color: #0922ff;
+}
