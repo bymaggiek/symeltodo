@@ -27,11 +27,19 @@ body {
 .cards {
   max-width: 350px;
   height: 400px;
-  background-color: #f6f2f6;
   display: flex;
   flex-direction: column;
   border-radius: 10%;
   margin: 2rem 3rem;
+  box-shadow: 10px 10px 8px #bebebe;
+}
+
+.cards:nth-child(odd) {
+  background-color: #f6f2f6;
+}
+
+.cards:nth-child(even) {
+  background-color: #f5f8ef;
 }
 
 .firstRow {
@@ -86,7 +94,7 @@ body {
   font-size: 1.2rem;
   font-weight: bold;
   margin: 0.25rem 1.5rem;
-  background-color: #f6f2f6;
+  background-color: transparent;
   height: 1.5rem;
   cursor: pointer;
 }
@@ -100,19 +108,34 @@ body {
 .progress {
   color: #2bff09;
 }
+.progress:hover {
+  color: #76f862;
+}
 
 .done {
   color: #000000;
+}
+.done:hover {
+  color: #363636;
 }
 
 .todo {
   color: #09f0ff;
 }
+.todo:hover {
+  color: #78f4fd;
+}
 
 .roadblock {
   color: #ff4b4b;
 }
+.roadblock:hover {
+  color: #ff8080;
+}
 
 .review {
   color: #0922ff;
+}
+.review:hover {
+  color: #4658ff;
 }
