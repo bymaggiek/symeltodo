@@ -16,48 +16,52 @@
       crossorigin="anonymous"
     />
     <script src="https://kit.fontawesome.com/b1926f0f3c.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/addevent.css" />
     <script src="../js/index.js"></script>
     <title>Add Event</title>
   </head>
   <body>
 
    
-  
-    <form class="container">
+   <div class="container">
 
-     <h2>ADD A TASK</h2>
-     <i class="fas fa-times"></i>
+    <form>
+
+      <div class="form-header">
+       <h2>Add a Task</h2>
+       <i class="fas fa-2x fa-times-circle"></i>
+      </div>
+       
 
      <!-- Task -->
-     <div class="mb-3">
+     <div class="mb-2">
        <label for="exampleFormControlInput1" class="form-label">Task</label>
        <input type="form-control" class="form-control" id="exampleFormControlInput1" >
      </div>
 
      <!-- Task Description -->
-     <div class="mb-3">
+     <div class="mb-2">
        <label for="exampleFormControlTextarea1" class="form-label">Task Description</label>
-       <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write a short and sweet description for the task."></textarea>
+       <textarea maxlength="280" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write a short and sweet description for the task."></textarea>
      </div>
 
      <!-- Person Assigned -->
-     <div class="mb-3">
+     <div class="mb-2">
       <label for="exampleFormControlInput1" class="form-label">Name</label>
       <input type="form-control" class="form-control" id="exampleFormControlInput1" placeholder="Task to be assigned to...">
     </div>
 
      <!-- Calendar -->
-     <div class="mb-3">
+     <div class="mb-2">
       <label for="exampleFormControlInput1" class="form-label">Due Date</label>
       <input type="form-control" class="form-control" id="exampleFormControlInput1" >
     </div>
 
      <!-- Status Field -->
      
-     <div class="mb-3">
+     <div class="mb-4">
      <label for="exampleDataList" class="form-label">Status</label>
-     <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+     <input class="form-control" list="datalistOptions" id="exampleDataList">
      <datalist id="datalistOptions">
        <option value="To Start">
        <option value="In Progress">
@@ -67,10 +71,14 @@
       </datalist>
      </div>
 
+
      <!-- Button -->
-     <button type="submit" class="btn btn-primary">Sign in</button>
+     <button type="submit" class="btn">SAVE</button>
    
     </form>
+
+   </div>
+   
 
 
 
