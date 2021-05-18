@@ -240,3 +240,8 @@ body {
 .form-header .fas:hover {
   color: rgb(77, 20, 74);
 }
+
+.btn-close {
+  font-size: 2rem;
+  background-color: red;
+}
