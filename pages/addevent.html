@@ -15,85 +15,91 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
-    <script src="https://kit.fontawesome.com/b1926f0f3c.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/b1926f0f3c.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="../css/addevent.css" />
     <script src="../js/index.js"></script>
     <title>Add Event</title>
   </head>
   <body>
+    <div class="container">
+      <form>
+        <div class="form-header">
+          <h2>Add a Task</h2>
+          <i class="fas fa-2x fa-times-circle"></i>
+        </div>
 
-   
-   <div class="container">
+        <!-- Task -->
+        <div class="mb-2">
+          <label for="exampleFormControlInput1" class="form-label">Task</label>
+          <input
+            type="form-control"
+            class="form-control"
+            id="exampleFormControlInput1"
+          />
+        </div>
 
-    <form>
+        <!-- Task Description -->
+        <div class="mb-2">
+          <label for="exampleFormControlTextarea1" class="form-label"
+            >Task Description</label
+          >
+          <textarea
+            maxlength="280"
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+            placeholder="Write a short and sweet description for the task."
+          ></textarea>
+        </div>
 
-      <div class="form-header">
-       <h2>Add a Task</h2>
-       <i class="fas fa-2x fa-times-circle"></i>
-      </div>
-       
+        <!-- Person Assigned -->
+        <div class="mb-2">
+          <label for="exampleFormControlInput1" class="form-label">Name</label>
+          <input
+            type="form-control"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Task to be assigned to..."
+          />
+        </div>
 
-     <!-- Task -->
-     <div class="mb-2">
-       <label for="exampleFormControlInput1" class="form-label">Task</label>
-       <input type="form-control" class="form-control" id="exampleFormControlInput1" >
-     </div>
+        <!-- Calendar -->
+        <div class="mb-2">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Due Date</label
+          >
+          <input
+            type="form-control"
+            class="form-control"
+            id="exampleFormControlInput1"
+          />
+        </div>
 
-     <!-- Task Description -->
-     <div class="mb-2">
-       <label for="exampleFormControlTextarea1" class="form-label">Task Description</label>
-       <textarea maxlength="280" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write a short and sweet description for the task."></textarea>
-     </div>
+        <!-- Status Field -->
 
-     <!-- Person Assigned -->
-     <div class="mb-2">
-      <label for="exampleFormControlInput1" class="form-label">Name</label>
-      <input type="form-control" class="form-control" id="exampleFormControlInput1" placeholder="Task to be assigned to...">
+        <div class="mb-4">
+          <label for="exampleDataList" class="form-label">Status</label>
+          <input
+            class="form-control"
+            list="datalistOptions"
+            id="exampleDataList"
+          />
+          <datalist id="datalistOptions">
+            <option value="To Start"></option>
+            <option value="In Progress"></option>
+            <option value="Roadblock"></option>
+            <option value="Review"></option>
+            <option value="Completed"></option>
+          </datalist>
+        </div>
+
+        <!-- Button -->
+        <button type="submit" class="btn">SAVE</button>
+      </form>
     </div>
-
-     <!-- Calendar -->
-     <div class="mb-2">
-      <label for="exampleFormControlInput1" class="form-label">Due Date</label>
-      <input type="form-control" class="form-control" id="exampleFormControlInput1" >
-    </div>
-
-     <!-- Status Field -->
-     
-     <div class="mb-4">
-     <label for="exampleDataList" class="form-label">Status</label>
-     <input class="form-control" list="datalistOptions" id="exampleDataList">
-     <datalist id="datalistOptions">
-       <option value="To Start">
-       <option value="In Progress">
-       <option value="Roadblock">
-       <option value="Review">
-       <option value="Completed">
-      </datalist>
-     </div>
-
-
-     <!-- Button -->
-     <button type="submit" class="btn">SAVE</button>
-   
-    </form>
-
-   </div>
-   
-
-
-
-
-
-
-
-
-
-
-
-
-    
-  
-
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -113,4 +119,5 @@
       crossorigin="anonymous"
     ></script>
   </body>
-</html>.
+</html>
+.
