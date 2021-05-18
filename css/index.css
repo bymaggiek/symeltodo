@@ -3,6 +3,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   background-color: #d7f1f4;
+  font-size: 18px;
 }
 
 .addCardSection {
@@ -12,6 +13,14 @@ body {
 
 .playwith {
   margin: 3rem 10rem;
+  background-image: linear-gradient(
+    to bottom,
+    #10ed36,
+    #00f188,
+    #00f2c2,
+    #00efeb,
+    #00e9ff
+  );
 }
 
 .main {
@@ -57,11 +66,14 @@ body {
 }
 
 .firstRow > button {
-  background-color: red;
+  /* background-color: rgb(255, 108, 108); */
+  background-color: transparent;
   height: 2rem;
   width: 2rem;
   margin: 1rem 1.7rem;
   cursor: pointer;
+  border: none;
+  border-radius: 50%;
 }
 
 .firstRow > button:hover {
