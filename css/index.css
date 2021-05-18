@@ -146,6 +146,11 @@ body {
   background-color: rgb(77, 20, 74);
 }
 
+.modal-header .btn-close {
+  background-color: white;
+  margin-right: 10px ;
+}
+
 .modal-header h2 {
   color: white;
   font-weight: bold;
