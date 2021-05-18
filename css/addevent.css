@@ -65,6 +65,7 @@ body {
   border-radius: 15px;
   transition: .3s;
   padding-bottom: 30px;
+
   background-color: black;
   color: white;
   font-weight: bold;
@@ -87,6 +88,7 @@ background-color: rgb(88, 7, 84);
 }
 
 .container form #exampleFormControlTextarea1 {
+  max-height: 100px;
   max-height: 100px;
   height: 100%;
 }
