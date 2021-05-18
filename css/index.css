@@ -161,6 +161,12 @@ body {
   width: 100%;
   margin: 0;
 }
+
+.modal-header .btn-close {
+  font-size: small;
+}
+
+
 /* 
 . addCardSection {
   width: 600px;
@@ -250,3 +256,5 @@ body {
   font-size: 2rem;
   background-color: red;
 }
+
+
