@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="../css/index.css" />
+    <title>SyMelFinalProject</title>
+  </head>
+  <body>
+    <!-- section to display the addCardButton -->
+    <div class="addCardSection">
+      <button
+        type="button"
+        class="btn btn-primary playwith"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        <i class="fa fa-plus" aria-hidden="true">
+          ADD A TASK</i
+        >
+      </button>
+
+      <!-- Show the form to add a card -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2>Add a Task</h2>
+              <button
+                type="button"
+                class="fa-0.2x btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <!-- main content of the form -->
+
+            <div class="container">
+              <!-- Task -->
+              <form>
+                <div class="form-header">
+                  <h2>Add a Task</h2>
+                </div>
+                <!-- Task -->
+                <div class="mb-2">
+                  <label for="exampleFormControlInput1" class="form-label"
+                    >Task</label
+                  >
+                  <input
+                    type="form-control"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                  />
+                </div>
+
+                <!-- Task Description -->
+                <div class="mb-2">
+                  <label for="exampleFormControlTextarea1" class="form-label"
+                    >Task Description</label
+                  >
+                  <textarea
+                    maxlength="280"
+                    class="form-control"
+                    id="exampleFormControlTextarea1"
+                    rows="3"
+                    placeholder="Write a short and sweet description for the task."
+                  ></textarea>
+                </div>
+
+                <!-- Person Assigned -->
+                <div class="mb-2">
+                  <label for="exampleFormControlInput1" class="form-label"
+                    >Name</label
+                  >
+                  <input
+                    type="form-control"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="Task to be assigned to..."
+                  />
+                </div>
+
+                <!-- Calendar -->
+                <div class="mb-2">
+                  <label for="exampleFormControlInput1" class="form-label"
+                    >Due Date</label
+                  >
+                  <input
+                    type="form-control"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                  />
+                </div>
+
+                <!-- Status Field -->
+
+                <div class="mb-4">
+                  <label for="exampleDataList" class="form-label">Status</label>
+                  <input
+                    class="form-control"
+                    list="datalistOptions"
+                    id="exampleDataList"
+                  />
+                  <datalist id="datalistOptions">
+                    <option value="To Start"></option>
+                    <option value="In Progress"></option>
+                    <option value="Roadblock"></option>
+                    <option value="Review"></option>
+                    <option value="Completed"></option>
+                  </datalist>
+                </div>
+
+                <!-- Button -->
+                <button type="submit" class="btn">SAVE</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- section to display the main cards -->
+    <div class="main">
+      <div class="cards">
+        <!-- first row of the card, containing the due-date and the delete button -->
+        <div class="firstRow">
+          <span>Due Date</span>
+          <button><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+        </div>
+        <span class="date">May 16</span>
+        <span class="title">Task 1</span>
+        <p class="description">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium
+          porro ut laborum voluptatum vel inventore eos, mollitia similique rem
+          eius! Perferendis officia nam, sequi vero quis nobis sunt similique
+          enim iusto cumque facere beatae fugit exercitationem possimus libero,
+          aut delectus veniam ea corporis vel tempore mollitia impedit! Ratione
+          fugiat maiores tempora, fuga enim similique accusantium dolore iste,
+          esse eligendi harum reiciendis error at explicabo, aperiam cum?
+          Corrupti repudiandae a error doloribus dolore eaque id, cupiditate
+          itaque recusandae sunt aliquam distinctio non tempore beatae
+          reiciendis officia ducimus dignissimos. Nisi cumque dignissimos
+          voluptatibus, obcaecati deleniti voluptatem atque inventore quam
+          eveniet, provident possimus.
+        </p>
+        <span class="status progress">IN PROGRESS</span>
+        <span class="assigned">Maggie</span>
+      </div>
+      <div class="cards">
+        <!-- first row of the card, containing the due-date and the delete button -->
+        <div class="firstRow">
+          <span>Due Date</span>
+          <button><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+        </div>
+        <span class="date">May 17</span>
+        <span class="title">Task 2</span>
+        <p class="description">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium
+          porro ut laborum voluptatum vel inventore eos, mollitia similique rem
+          eius! Perferendis
+        </p>
+        <span class="status todo">TODO</span>
+        <span class="assigned">Maggie</span>
+      </div>
+      <div class="cards">
+        <!-- first row of the card, containing the due-date and the delete button -->
+        <div class="firstRow">
+          <span>Due Date</span>
+          <button><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+        </div>
+        <span class="date">May 16</span>
+        <span class="title">Task 3</span>
+        <p class="description">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium
+          porro ut laborum voluptatum vel inventore eos, mollitia similique rem
+          eius! Perferendis officia nam, sequi vero quis nobis sunt similique
+          enim iusto cumque facere beatae fugit exercitationem possimus libero,
+          aut delectus veniam ea corporis vel tempore mollitia impedit! Ratione
+          fugiat maiores tempora
+        </p>
+        <span class="status review">REVIEW</span>
+        <span class="assigned">Yiteng</span>
+      </div>
+      <div class="cards">
+        <!-- first row of the card, containing the due-date and the delete button -->
+        <div class="firstRow">
+          <span>Due Date</span>
+          <button><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+        </div>
+        <span class="date">May 15</span>
+        <span class="title">Task 4</span>
+        <p class="description">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium
+          porro ut laborum voluptatum vel inventore eos, mollitia similique rem
+          eius! Perferendis officia nam, sequi vero quis nobis sunt similique
+          enim iusto cumque facere beatae fugit exercitationem possimus libero,
+          aut delectus veniam ea corporis vel tempore mollitia impedit! Ratione
+          fugiat maiores tempora, fuga enim similique accusantium dolore iste,
+          esse eligendi harum reiciendis error at explicabo, aperiam cum?
+          Corrupti repudiandae a error doloribus dolore eaque id, cupiditate
+          itaque recusandae sunt aliquam distinctio non tempore beatae
+          reiciendis officia ducimus dignissimos. Nisi cumque dignissimos
+          voluptatibus, obcaecati deleniti voluptatem atque inventore quam
+          eveniet, provident possimus.
+        </p>
+        <span class="status done">DONE</span>
+        <span class="assigned">Maggie</span>
+      </div>
+      <div class="cards">
+        <!-- first row of the card, containing the due-date and the delete button -->
+        <div class="firstRow">
+          <span>Due Date</span>
+          <button><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+        </div>
+        <span class="date">May 15</span>
+        <span class="title">Task 5</span>
+        <p class="description">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium
+          porro ut laborum voluptatum vel inventore eos, mollitia similique rem
+          eius! Perferendis officia nam, sequi vero quis nobis sunt similique
+          enim iusto cumque facere beatae fugit exercitationem possimus libero,
+          aut delectus veniam ea corporis vel tempore mollitia impedit! Ratione
+          fugiat maiores tempora, fuga enim similique accusantium dolore iste,
+          esse eligendi harum reiciendis error at explicabo, aperiam cum?
+          Corrupti repudiandae a error doloribus dolore eaque id, cupiditate
+          itaque recusandae sunt aliquam distinctio non tempore beatae
+          reiciendis officia ducimus dignissimos. Nisi cumque dignissimos
+          voluptatibus, obcaecati deleniti voluptatem atque inventore quam
+          eveniet, provident possimus.
+        </p>
+        <span class="status roadblock">ROADBLOCK</span>
+        <span class="assigned">Yiteng</span>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+      integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/6ac5208c06.js"></script>
+    <!-- Vanilla JS -->
+    <script src="../js/index.js"></script>
+  </body>
+</html>
