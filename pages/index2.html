@@ -18,8 +18,9 @@
     <link rel="stylesheet" href="../css/index2.css" />
     <title>Copy</title>
   </head>
+
   <body>
-    <!-- Nav section -->
+    <!-- Start Nav section -->
     <nav class="addCardSection">
       <div class="title">
         <i class="fas fa-hand-spock"></i>
@@ -36,9 +37,9 @@
         </button>
       </div>
     </nav>
-    <!-- Nav section ends here -->
+    <!-- End nav section here -->
 
-    <!-- Show the add-card form -->
+    <!-- Start the add-card form -->
     <div
       class="modal fade"
       id="exampleModal"
@@ -52,6 +53,7 @@
             <h2>Add a Task</h2>
             <button
               type="button"
+              id="closeBtn"
               class="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
@@ -103,7 +105,6 @@
               </div>
 
               <!-- Status Field -->
-
               <div class="mb-4">
                 <label for="status" class="form-label">Status</label>
                 <select
@@ -119,7 +120,7 @@
               </div>
 
               <!-- Button -->
-              <button type="submit" class="btn">SAVE</button>
+              <button id="saveBtn" class="btn">SAVE</button>
               <div class="additionalBtns">
                 <button id="resetBtn" class="resetBtn">reset</button>
                 <button id="deleteBtn" class="deleteBtn">delete</button>
@@ -130,6 +131,453 @@
       </div>
     </div>
     <!-- End show add-card form -->
+
+    <!-- Start main section -->
+    <session class="main">
+      <!-- Start to-start section -->
+      <div class="main-column">
+        <h2>To Start</h2>
+        <div class="card-display">
+          <div class="card">
+            <div class="card-header">
+              <p id="card-title">Task name</p>
+              <i class="fas fa-pen"></i>
+            </div>
+            <div class="card-description">
+              <p id="card-desc">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
+                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
+                animi voluptatum doloremque id atque? Vitae, distinctio
+                possimus.
+              </p>
+            </div>
+            <div class="card-footer">
+              <p id="card-assigned">Asgn-Name</p>
+              <p id="due-date">May 30</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <p id="card-title">Task name goes hereTask name goes here</p>
+              <i class="fas fa-pen"></i>
+            </div>
+            <div class="card-description">
+              <p id="card-desc">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
+                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
+                animi voluptatum doloremque id atque? Vitae, distinctio
+                possimus.Lorem ipsum dolor sit amet, consectetur adipisicing
+                elit. At, inventore, suscipit aspernatur nobis nam, mollitia
+                modi ipsum animi voluptatum doloremque id atque? Vitae,
+                distinctio possimus.
+              </p>
+            </div>
+            <div class="card-footer">
+              <p id="card-assigned">
+                Asgn-Name12348964123489641234896412348964
+              </p>
+              <p id="due-date">May 30</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <p id="card-title">Task name goes here</p>
+              <i class="fas fa-pen"></i>
+            </div>
+            <div class="card-description">
+              <p id="card-desc">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
+                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
+                animi voluptatum doloremque id atque? Vitae, distinctio
+                possimus.
+              </p>
+            </div>
+            <div class="card-footer">
+              <p id="card-assigned">Asgn-Name</p>
+              <p id="due-date">May 30</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <p id="card-title">Task name goes here</p>
+              <i class="fas fa-pen"></i>
+            </div>
+            <div class="card-description">
+              <p id="card-desc">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
+                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
+                animi voluptatum doloremque id atque? Vitae, distinctio
+                possimus.
+              </p>
+            </div>
+            <div class="card-footer">
+              <p id="card-assigned">Asgn-Name</p>
+              <p id="due-date">May 30</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <p id="card-title">Task name goes here</p>
+              <i class="fas fa-pen"></i>
+            </div>
+            <div class="card-description">
+              <p id="card-desc">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
+                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
+                animi voluptatum doloremque id atque? Vitae, distinctio
+                possimus.
+              </p>
+            </div>
+            <div class="card-footer">
+              <p id="card-assigned">Asgn-Name</p>
+              <p id="due-date">May 30</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <p id="card-title">Task name goes here</p>
+              <i class="fas fa-pen"></i>
+            </div>
+            <div class="card-description">
+              <p id="card-desc">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
+                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
+                animi voluptatum doloremque id atque? Vitae, distinctio
+                possimus.
+              </p>
+            </div>
+            <div class="card-footer">
+              <p id="card-assigned">Asgn-Name</p>
+              <p id="due-date">May 30</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <p id="card-title">Task name goes here</p>
+              <i class="fas fa-pen"></i>
+            </div>
+            <div class="card-description">
+              <p id="card-desc">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
+                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
+                animi voluptatum doloremque id atque? Vitae, distinctio
+                possimus.
+              </p>
+            </div>
+            <div class="card-footer">
+              <p id="card-assigned">Asgn-Name</p>
+              <p id="due-date">May 30</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <p id="card-title">Task name goes here</p>
+              <i class="fas fa-pen"></i>
+            </div>
+            <div class="card-description">
+              <p id="card-desc">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
+                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
+                animi voluptatum doloremque id atque? Vitae, distinctio
+                possimus.
+              </p>
+            </div>
+            <div class="card-footer">
+              <p id="card-assigned">Asgn-Name</p>
+              <p id="due-date">May 30</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <p id="card-title">Task name goes here</p>
+              <i class="fas fa-pen"></i>
+            </div>
+            <div class="card-description">
+              <p id="card-desc">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
+                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
+                animi voluptatum doloremque id atque? Vitae, distinctio
+                possimus.
+              </p>
+            </div>
+            <div class="card-footer">
+              <p id="card-assigned">Asgn-Name</p>
+              <p id="due-date">May 30</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <p id="card-title">Task name goes here</p>
+              <i class="fas fa-pen"></i>
+            </div>
+            <div class="card-description">
+              <p id="card-desc">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
+                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
+                animi voluptatum doloremque id atque? Vitae, distinctio
+                possimus.
+              </p>
+            </div>
+            <div class="card-footer">
+              <p id="card-assigned">Asgn-Name</p>
+              <p id="due-date">May 30</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <p id="card-title">Task name goes here</p>
+              <i class="fas fa-pen"></i>
+            </div>
+            <div class="card-description">
+              <p id="card-desc">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
+                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
+                animi voluptatum doloremque id atque? Vitae, distinctio
+                possimus.
+              </p>
+            </div>
+            <div class="card-footer">
+              <p id="card-assigned">Asgn-Name</p>
+              <p id="due-date">May 30</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <p id="card-title">Task name goes here</p>
+              <i class="fas fa-pen"></i>
+            </div>
+            <div class="card-description">
+              <p id="card-desc">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
+                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
+                animi voluptatum doloremque id atque? Vitae, distinctio
+                possimus.
+              </p>
+            </div>
+            <div class="card-footer">
+              <p id="card-assigned">Asgn-Name</p>
+              <p id="due-date">May 30</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End to-start section -->
+
+      <!-- Start in-progress section -->
+      <div class="main-column">
+        <h2>In Progress</h2>
+        <div class="card-display">
+          <div class="card">
+            <div class="card-header">
+              <p id="card-title">Task name</p>
+              <i class="fas fa-pen"></i>
+            </div>
+            <div class="card-description">
+              <p id="card-desc">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
+                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
+                animi voluptatum doloremque id atque? Vitae, distinctio
+                possimus.
+              </p>
+            </div>
+            <div class="card-footer">
+              <p id="card-assigned">Asgn-Name</p>
+              <p id="due-date">May 30</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <p id="card-title">Task name goes here</p>
+              <i class="fas fa-pen"></i>
+            </div>
+            <div class="card-description">
+              <p id="card-desc">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
+                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
+                animi voluptatum doloremque id atque? Vitae, distinctio
+                possimus.
+              </p>
+            </div>
+            <div class="card-footer">
+              <p id="card-assigned">Asgn-Name</p>
+              <p id="due-date">May 30</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <p id="card-title">Task name goes here</p>
+              <i class="fas fa-pen"></i>
+            </div>
+            <div class="card-description">
+              <p id="card-desc">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
+                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
+                animi voluptatum doloremque id atque? Vitae, distinctio
+                possimus.
+              </p>
+            </div>
+            <div class="card-footer">
+              <p id="card-assigned">Asgn-Name</p>
+              <p id="due-date">May 30</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End in-progress section -->
+
+      <!-- Start in-review section -->
+      <div class="main-column">
+        <h2>In Review</h2>
+        <div class="card-display"></div>
+      </div>
+      <!-- End in-review section -->
+    </session>
+    <!-- End main section -->
+
+    <!-- Start completed section -->
+    <div class="complete">
+      <h2>Completed<i class="fas fa-angle-double-down"></i></h2>
+      <div class="complete-column">
+        <div class="card">
+          <div class="card-header">
+            <p id="card-title">Task name</p>
+            <i class="fas fa-pen"></i>
+          </div>
+          <div class="card-description">
+            <p id="card-desc">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
+              inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
+              animi voluptatum doloremque id atque? Vitae, distinctio possimus.
+            </p>
+          </div>
+          <div class="card-footer">
+            <p id="card-assigned">Asgn-Name</p>
+            <p id="due-date">May 30</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <p id="card-title">Task name</p>
+            <i class="fas fa-pen"></i>
+          </div>
+          <div class="card-description">
+            <p id="card-desc">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
+              inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
+              animi voluptatum doloremque id atque? Vitae, distinctio possimus.
+            </p>
+          </div>
+          <div class="card-footer">
+            <p id="card-assigned">Asgn-Name</p>
+            <p id="due-date">May 30</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <p id="card-title">Task name</p>
+            <i class="fas fa-pen"></i>
+          </div>
+          <div class="card-description">
+            <p id="card-desc">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
+              inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
+              animi voluptatum doloremque id atque? Vitae, distinctio possimus.
+            </p>
+          </div>
+          <div class="card-footer">
+            <p id="card-assigned">Asgn-Name</p>
+            <p id="due-date">May 30</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <p id="card-title">Task name</p>
+            <i class="fas fa-pen"></i>
+          </div>
+          <div class="card-description">
+            <p id="card-desc">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
+              inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
+              animi voluptatum doloremque id atque? Vitae, distinctio possimus.
+            </p>
+          </div>
+          <div class="card-footer">
+            <p id="card-assigned">Asgn-Name</p>
+            <p id="due-date">May 30</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <p id="card-title">Task name</p>
+            <i class="fas fa-pen"></i>
+          </div>
+          <div class="card-description">
+            <p id="card-desc">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
+              inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
+              animi voluptatum doloremque id atque? Vitae, distinctio possimus.
+            </p>
+          </div>
+          <div class="card-footer">
+            <p id="card-assigned">Asgn-Name</p>
+            <p id="due-date">May 30</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <p id="card-title">Task name</p>
+            <i class="fas fa-pen"></i>
+          </div>
+          <div class="card-description">
+            <p id="card-desc">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
+              inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
+              animi voluptatum doloremque id atque? Vitae, distinctio possimus.
+            </p>
+          </div>
+          <div class="card-footer">
+            <p id="card-assigned">Asgn-Name</p>
+            <p id="due-date">May 30</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <p id="card-title">Task name</p>
+            <i class="fas fa-pen"></i>
+          </div>
+          <div class="card-description">
+            <p id="card-desc">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
+              inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
+              animi voluptatum doloremque id atque? Vitae, distinctio possimus.
+            </p>
+          </div>
+          <div class="card-footer">
+            <p id="card-assigned">Asgn-Name</p>
+            <p id="due-date">May 30</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <p id="card-title">Task name</p>
+            <i class="fas fa-pen"></i>
+          </div>
+          <div class="card-description">
+            <p id="card-desc">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
+              inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
+              animi voluptatum doloremque id atque? Vitae, distinctio possimus.
+            </p>
+          </div>
+          <div class="card-footer">
+            <p id="card-assigned">Asgn-Name</p>
+            <p id="due-date">May 30</p>
+          </div>
+        </div>
+      </div>
+      <footer>Copyright 2021. All Rights Reversed by SydMel.</footer>
+    </div>
+    <!-- End completed section -->
 
     <!-- Optional JavaScript -->
     <script
