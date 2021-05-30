@@ -67,7 +67,12 @@
               <!-- Task -->
               <div class="mb-2">
                 <label for="taskName" class="form-label">Task</label>
-                <input type="form-control" class="form-control" id="taskName" />
+                <input
+                  type="form-control"
+                  class="form-control"
+                  id="taskName"
+                  required
+                />
               </div>
 
               <!-- Task Description -->
@@ -87,20 +92,24 @@
               <!-- Calendar -->
               <div class="mb-2 dateDiv">
                 <label for="dueDate" class="form-label">Due Date</label>
-                <input type="form-control" class="form-control" id="dueDate" />
+                <input
+                  type="form-control"
+                  class="form-control"
+                  id="dueDate"
+                  required
+                />
                 <i class="fas fa-calendar-alt"></i>
               </div>
 
               <!-- Person Assigned -->
               <div class="mb-2">
-                <label for="exampleFormControlInput1" class="form-label"
-                  >Name</label
-                >
+                <label for="assignedPPL" class="form-label">Name</label>
                 <input
                   type="form-control"
                   class="form-control"
-                  id="exampleFormControlInput1"
+                  id="assignedPPL"
                   placeholder="Task to be assigned to..."
+                  required
                 />
               </div>
 
@@ -112,10 +121,10 @@
                   id="status"
                   aria-label="Default select example"
                 >
-                  <option selected>To Start</option>
-                  <option value="1">In Progress</option>
-                  <option value="2">In Review</option>
-                  <option value="3">Completed</option>
+                  <option value="to-start" selected>To Start</option>
+                  <option value="in-progress">In Progress</option>
+                  <option value="in-review">In Review</option>
+                  <option value="complete">Completed</option>
                 </select>
               </div>
 
@@ -137,236 +146,14 @@
       <!-- Start to-start section -->
       <div class="main-column">
         <h2>To Start</h2>
-        <div class="card-display">
-          <div class="card">
-            <div class="card-header">
-              <p id="card-title">Task name</p>
-              <i class="fas fa-pen"></i>
-            </div>
-            <div class="card-description">
-              <p id="card-desc">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
-                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
-                animi voluptatum doloremque id atque? Vitae, distinctio
-                possimus.
-              </p>
-            </div>
-            <div class="card-footer">
-              <p id="card-assigned">Asgn-Name</p>
-              <p id="due-date">May 30</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              <p id="card-title">Task name goes hereTask name goes here</p>
-              <i class="fas fa-pen"></i>
-            </div>
-            <div class="card-description">
-              <p id="card-desc">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
-                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
-                animi voluptatum doloremque id atque? Vitae, distinctio
-                possimus.Lorem ipsum dolor sit amet, consectetur adipisicing
-                elit. At, inventore, suscipit aspernatur nobis nam, mollitia
-                modi ipsum animi voluptatum doloremque id atque? Vitae,
-                distinctio possimus.
-              </p>
-            </div>
-            <div class="card-footer">
-              <p id="card-assigned">
-                Asgn-Name12348964123489641234896412348964
-              </p>
-              <p id="due-date">May 30</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              <p id="card-title">Task name goes here</p>
-              <i class="fas fa-pen"></i>
-            </div>
-            <div class="card-description">
-              <p id="card-desc">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
-                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
-                animi voluptatum doloremque id atque? Vitae, distinctio
-                possimus.
-              </p>
-            </div>
-            <div class="card-footer">
-              <p id="card-assigned">Asgn-Name</p>
-              <p id="due-date">May 30</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              <p id="card-title">Task name goes here</p>
-              <i class="fas fa-pen"></i>
-            </div>
-            <div class="card-description">
-              <p id="card-desc">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
-                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
-                animi voluptatum doloremque id atque? Vitae, distinctio
-                possimus.
-              </p>
-            </div>
-            <div class="card-footer">
-              <p id="card-assigned">Asgn-Name</p>
-              <p id="due-date">May 30</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              <p id="card-title">Task name goes here</p>
-              <i class="fas fa-pen"></i>
-            </div>
-            <div class="card-description">
-              <p id="card-desc">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
-                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
-                animi voluptatum doloremque id atque? Vitae, distinctio
-                possimus.
-              </p>
-            </div>
-            <div class="card-footer">
-              <p id="card-assigned">Asgn-Name</p>
-              <p id="due-date">May 30</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              <p id="card-title">Task name goes here</p>
-              <i class="fas fa-pen"></i>
-            </div>
-            <div class="card-description">
-              <p id="card-desc">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
-                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
-                animi voluptatum doloremque id atque? Vitae, distinctio
-                possimus.
-              </p>
-            </div>
-            <div class="card-footer">
-              <p id="card-assigned">Asgn-Name</p>
-              <p id="due-date">May 30</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              <p id="card-title">Task name goes here</p>
-              <i class="fas fa-pen"></i>
-            </div>
-            <div class="card-description">
-              <p id="card-desc">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
-                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
-                animi voluptatum doloremque id atque? Vitae, distinctio
-                possimus.
-              </p>
-            </div>
-            <div class="card-footer">
-              <p id="card-assigned">Asgn-Name</p>
-              <p id="due-date">May 30</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              <p id="card-title">Task name goes here</p>
-              <i class="fas fa-pen"></i>
-            </div>
-            <div class="card-description">
-              <p id="card-desc">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
-                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
-                animi voluptatum doloremque id atque? Vitae, distinctio
-                possimus.
-              </p>
-            </div>
-            <div class="card-footer">
-              <p id="card-assigned">Asgn-Name</p>
-              <p id="due-date">May 30</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              <p id="card-title">Task name goes here</p>
-              <i class="fas fa-pen"></i>
-            </div>
-            <div class="card-description">
-              <p id="card-desc">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
-                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
-                animi voluptatum doloremque id atque? Vitae, distinctio
-                possimus.
-              </p>
-            </div>
-            <div class="card-footer">
-              <p id="card-assigned">Asgn-Name</p>
-              <p id="due-date">May 30</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              <p id="card-title">Task name goes here</p>
-              <i class="fas fa-pen"></i>
-            </div>
-            <div class="card-description">
-              <p id="card-desc">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
-                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
-                animi voluptatum doloremque id atque? Vitae, distinctio
-                possimus.
-              </p>
-            </div>
-            <div class="card-footer">
-              <p id="card-assigned">Asgn-Name</p>
-              <p id="due-date">May 30</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              <p id="card-title">Task name goes here</p>
-              <i class="fas fa-pen"></i>
-            </div>
-            <div class="card-description">
-              <p id="card-desc">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
-                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
-                animi voluptatum doloremque id atque? Vitae, distinctio
-                possimus.
-              </p>
-            </div>
-            <div class="card-footer">
-              <p id="card-assigned">Asgn-Name</p>
-              <p id="due-date">May 30</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              <p id="card-title">Task name goes here</p>
-              <i class="fas fa-pen"></i>
-            </div>
-            <div class="card-description">
-              <p id="card-desc">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At,
-                inventore, suscipit aspernatur nobis nam, mollitia modi ipsum
-                animi voluptatum doloremque id atque? Vitae, distinctio
-                possimus.
-              </p>
-            </div>
-            <div class="card-footer">
-              <p id="card-assigned">Asgn-Name</p>
-              <p id="due-date">May 30</p>
-            </div>
-          </div>
-        </div>
+        <div class="card-display" id="startCol"></div>
       </div>
       <!-- End to-start section -->
 
       <!-- Start in-progress section -->
       <div class="main-column">
         <h2>In Progress</h2>
-        <div class="card-display">
+        <div class="card-display" id="inProgressCol">
           <div class="card">
             <div class="card-header">
               <p id="card-title">Task name</p>
@@ -428,7 +215,7 @@
       <!-- Start in-review section -->
       <div class="main-column">
         <h2>In Review</h2>
-        <div class="card-display"></div>
+        <div class="card-display" id="inReviewCol"></div>
       </div>
       <!-- End in-review section -->
     </session>
@@ -436,8 +223,10 @@
 
     <!-- Start completed section -->
     <div class="complete">
-      <h2>Completed<i class="fas fa-angle-double-down"></i></h2>
-      <div class="complete-column">
+      <h2 id="completeBtn">
+        Completed<i class="fas fa-angle-double-down" id="angle"></i>
+      </h2>
+      <div class="complete-column" id="completeCol">
         <div class="card">
           <div class="card-header">
             <p id="card-title">Task name</p>
@@ -601,6 +390,6 @@
       crossorigin="anonymous"
     ></script>
     <!-- Vanilla JS -->
-    <script src="../js/index.js"></script>
+    <script src="../js/index.js" defer></script>
   </body>
 </html>

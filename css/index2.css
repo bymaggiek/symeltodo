@@ -256,13 +256,12 @@ body {
   margin: 1rem;
 }
 .complete-column {
-  display: flex;
+  display: none;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
   max-height: 20rem;
   overflow: auto;
-  /* display: none; */
 }
 footer {
   margin: 1rem auto;
