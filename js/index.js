@@ -2,10 +2,10 @@ const completeBtn = document.getElementById("completeBtn");
 const completeCol = document.getElementById("completeCol");
 const angle = document.getElementById("angle");
 
-const taskName = document.getElementById("taskName");
+let taskName = document.getElementById("taskName");
 const description = document.getElementById("description");
-const dueDate = document.getElementById("dueDate");
-const assignedPPL = document.getElementById("assignedPPL");
+let dueDate = document.getElementById("dueDate");
+let assignedPPL = document.getElementById("assignedPPL");
 const status = document.getElementById("status");
 
 const startCol = document.getElementById("startCol");
@@ -41,7 +41,7 @@ completeBtn.onclick = () => {
 
 // Save data as nested array under different categories - toStart, inProgress, inReview and Completed
 saveBtn.onclick = () => {
-  if (taskName.value && dueDate.value && assignedPPL) {
+  if (taskName.value && dueDate.value && assignedPPL.value) {
     switch (status.value) {
       case "to-start":
         const startArr = JSON.parse(localStorage.getItem("startArr"))
@@ -57,7 +57,7 @@ saveBtn.onclick = () => {
         ];
         startArr.push(newArr);
         localStorage.setItem("startArr", JSON.stringify(startArr));
-        addToColumn(newArr[newArr.length - 1], newArr);
+        updateColumn("to-start", startArr);
         break;
 
       case "in-progress":
@@ -116,39 +116,52 @@ saveBtn.onclick = () => {
 };
 
 // Add card to different columns based on category
+updateColumn = (status, str) => {
 
-addToColumn = (status, str) => {
-  cardHeaderP.innerHTML = `${str[1]}`;
-  cardHeaderI.className = "fas fa-pen";
-  cardHeader.appendChild(cardHeaderP);
-  cardHeader.appendChild(cardHeaderI);
+  str.forEach(subStr => {
 
-  cardDescriptionP.innerHTML = `${str[2]}`;
-  cardDescription.appendChild(cardDescriptionP);
+    cardHeaderP.innerHTML = `${subStr[1]}`;
+    cardHeaderP.className = "card-title";
+    cardHeaderI.className = "fas fa-pen";
+    cardHeader.className = "card-header";
+    cardHeader.appendChild(cardHeaderP);
+    cardHeader.appendChild(cardHeaderI);
+  
+    cardDescriptionP.innerHTML = `${subStr[2]}`;
+    cardDescription.className = "card-description"
+    cardDescription.appendChild(cardDescriptionP);
 
-  cardAssigned.innerHTML = `${str[4]}`;
-  cardDueDate.innerHTML = `${str[3]}`;
-  cardFooter.appendChild(cardAssigned);
-  cardFooter.appendChild(cardDueDate);
+    cardAssigned.innerHTML = `${subStr[4]}`;
+    cardAssigned.className = "card-assigned";
+    cardDueDate.innerHTML = `${subStr[3]}`;
+    cardDueDate.className = "due-date";
+    cardFooter.className = "card-footer";
+    cardFooter.appendChild(cardAssigned);
+    cardFooter.appendChild(cardDueDate);
 
-  card.appendChild(cardHeader);
-  card.appendChild(cardDescription);
-  card.appendChild(cardFooter);
+    card.className = "card";
+    card.appendChild(cardHeader);
+    card.appendChild(cardDescription);
+    card.appendChild(cardFooter);
 
-  switch (status) {
+    switch (status) {
     case "to-start":
+      startCol.className = "card-display";
       startCol.appendChild(card);
       break;
 
     case "in-progress":
+      inProgressCol.className = "card-display";
       inProgressCol.appendChild(card);
       break;
 
     case "in-review":
+      inReviewCol.className = "card-display";
       inReviewCol.appendChild(card);
       break;
 
     case "complete":
+      completeCol.className = "complete";
       completeCol.appendChild(card);
       break;
 
@@ -159,18 +172,6 @@ addToColumn = (status, str) => {
         console.log(e);
       }
   }
+})
+
 };
-cardHeaderP.innerHTML = `1564561230`;
-cardHeaderI.className = "fas fa-pen";
-cardHeader.appendChild(cardHeaderP);
-cardHeader.appendChild(cardHeaderI);
-cardDescriptionP.innerHTML = `badfhbsfghsf`;
-cardDescription.appendChild(cardDescriptionP);
-cardAssigned.innerHTML = `dfgs7a4dhb2sfdg}`;
-cardDueDate.innerHTML = `bsfg445hf21`;
-cardFooter.appendChild(cardAssigned);
-cardFooter.appendChild(cardDueDate);
-card.appendChild(cardHeader);
-card.appendChild(cardDescription);
-card.appendChild(cardFooter);
-startCol.appendChild(card);

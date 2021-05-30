@@ -148,6 +148,7 @@ body {
 /* to-start, in-progress, in-review */
 .main-column {
   width: 30%;
+  max-height: 68vh;
   min-width: 20rem;
   display: flex;
   flex-direction: column;
@@ -165,7 +166,7 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   max-height: 65vh;
   overflow: auto;
   background-color: rgb(163, 163, 163);
@@ -181,11 +182,11 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-.card-header > p,
+.card-title,
 .card-footer > p {
   margin: 0;
 }
-.card-header > p {
+.card-title {
   word-break: break-word;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -218,7 +219,7 @@ body {
   justify-content: space-between;
   padding: 0.3rem;
 }
-.card-footer > p:first-child {
+.card-assigned {
   width: 65%;
   height: 1.5rem;
   word-break: break-word;
@@ -228,7 +229,7 @@ body {
   -webkit-line-clamp: 1; /* number of lines to show */
   -webkit-box-orient: vertical;
 }
-.card-footer > p:last-child {
+.due-date {
   width: 35%;
   text-align: center;
 }
@@ -239,6 +240,9 @@ body {
 .complete {
   height: auto;
   margin-top: 2rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   background-color: rgb(163, 163, 163);
   display: flex;
   flex-direction: column;
