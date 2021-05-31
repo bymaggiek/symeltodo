@@ -3,7 +3,6 @@ const inProgressCol = document.getElementById("inProgressCol");
 const inReviewCol = document.getElementById("inReviewCol");
 const completeBtn = document.getElementById("completeBtn");
 const completeCol = document.getElementById("completeCol");
-const angle = document.getElementById("angle");
 
 const saveBtn = document.getElementById("saveBtn");
 const resetBtn = document.getElementById("resetBtn");
@@ -28,26 +27,32 @@ const inReviewArr = JSON.parse(localStorage.getItem("inReviewArr"))
 const completedArr = JSON.parse(localStorage.getItem("completeArr"))
   ? JSON.parse(localStorage.getItem("completeArr"))
   : [];
-if (startArr) {
-  startArr.forEach((arr) => {
-    addCard(arr, "to-start");
-  });
+
+updateCards();
+
+function updateCards() {
+  if (startArr) {
+    startArr.forEach((arr) => {
+      addCard(arr, "to-start");
+    });
+  }
+  if (inProgressArr) {
+    inProgressArr.forEach((arr) => {
+      addCard(arr, "in-progress");
+    });
+  }
+  if (inReviewArr) {
+    inReviewArr.forEach((arr) => {
+      addCard(arr, "in-review");
+    });
+  }
+  if (completedArr) {
+    completedArr.forEach((arr) => {
+      addCard(arr, "complete");
+    });
+  }
 }
-if (inProgressArr) {
-  inProgressArr.forEach((arr) => {
-    addCard(arr, "in-progress");
-  });
-}
-if (inReviewArr) {
-  inReviewArr.forEach((arr) => {
-    addCard(arr, "in-review");
-  });
-}
-if (completedArr) {
-  completedArr.forEach((arr) => {
-    addCard(arr, "complete");
-  });
-}
+
 let completeBtnCount = 0;
 
 // Show "create" button and Hide "reset" and "delete" buttons
@@ -60,6 +65,7 @@ addTaskBtn.addEventListener("click", () => {
 
 // Trigger Completed Section Show/Hide
 completeBtn.addEventListener("click", () => {
+  const angle = document.getElementById("angle");
   if (completeBtnCount === 0) {
     completeCol.style.display = "flex";
     angle.classList.replace("fa-angle-double-down", "fa-angle-double-up");
@@ -145,11 +151,6 @@ saveBtn.addEventListener("click", () => {
   }
 });
 
-// Reset data for the chosen card
-resetBtn.addEventListener("click", () => {});
-
-// Delete card from LS
-
 // Show "reset" and "delete" buttons and Hide "create" button
 function resetBtnTrigger(index, status) {
   resetBtn.style.display = "block";
@@ -158,20 +159,51 @@ function resetBtnTrigger(index, status) {
 
   if (status === 0) {
     document.getElementById("status").value = "to-start";
-    const triggeredArr = JSON.parse(localStorage.getItem("startArr"));
-    triggerInfo(triggeredArr, index);
+    const triggeredArrList = JSON.parse(localStorage.getItem("startArr"));
+    const targetArray = triggerInfo(triggeredArrList, index);
+    console.log(triggeredArrList);
+    console.log(targetArray);
+
+    resetBtn.addEventListener("click", () => {
+      changeInfo(triggeredArrList, targetArray, index, status);
+    });
+
+    // deleteBtn.addEventListener("click", () => {
+
+    // });
   } else if (status === 1) {
     document.getElementById("status").value = "in-progress";
     const triggeredArr = JSON.parse(localStorage.getItem("inProgressArr"));
-    triggerInfo(triggeredArr, index);
+    const targetArray = triggerInfo(triggeredArr, index);
+    // resetBtn.addEventListener("click", () => {
+    //   console.log(targetArray);
+    // });
+
+    // deleteBtn.addEventListener("click", () => {
+
+    // });
   } else if (status === 2) {
     document.getElementById("status").value = "in-review";
     const triggeredArr = JSON.parse(localStorage.getItem("inReviewArr"));
-    triggerInfo(triggeredArr, index);
+    const targetArray = triggerInfo(triggeredArr, index);
+    // resetBtn.addEventListener("click", () => {
+    //   console.log(targetArray);
+    // });
+
+    // deleteBtn.addEventListener("click", () => {
+
+    // });
   } else if (status === 3) {
     document.getElementById("status").value = "complete";
     const triggeredArr = JSON.parse(localStorage.getItem("completedArr"));
-    triggerInfo(triggeredArr, index);
+    const targetArray = triggerInfo(triggeredArr, index);
+    // resetBtn.addEventListener("click", () => {
+    //   console.log(targetArray);
+    // });
+
+    // deleteBtn.addEventListener("click", () => {
+
+    // });
   } else {
     try {
       document.getElementById("status").value = "to-start";
@@ -186,24 +218,24 @@ function triggerInfo(arr, index) {
   description.value = arr[index][2];
   dueDate.value = arr[index][3];
   assignedPPL.value = arr[index][4];
-  for (a in arr) {
-    if (arr[index][5] === 0) {
-      status.value = "to-start";
-    } else if (arr[index][5] === 1) {
-      status.value = "in-progress";
-    } else if (arr[index][5] === 2) {
-      status.value = "in-review";
-    } else if (arr[index][5] === 3) {
-      status.value = "complete";
-    } else {
-      try {
-        status.value = "to-start";
-      } catch (e) {
-        console.log(e);
-      }
-    }
-  }
-  tempArr = [
+  // for (a in arr) {
+  //   if (arr[index][5] === 0) {
+  //     status.value = "to-start";
+  //   } else if (arr[index][5] === 1) {
+  //     status.value = "in-progress";
+  //   } else if (arr[index][5] === 2) {
+  //     status.value = "in-review";
+  //   } else if (arr[index][5] === 3) {
+  //     status.value = "complete";
+  //   } else {
+  //     try {
+  //       status.value = "to-start";
+  //     } catch (e) {
+  //       console.log(e);
+  //     }
+  //   }
+  // }
+  return [
     taskName.value,
     description.value,
     dueDate.value,
@@ -211,6 +243,32 @@ function triggerInfo(arr, index) {
     status.value,
   ];
 }
+
+// Helper function to change the data from the selected card
+// arrList is the LocalStorage List;
+// arr is the selected list from specific column
+// index is the index number of arr in arrList
+// status is used to check if status reset to different on from origin
+function changeInfo(arrList, arr, index, status) {
+  arrList[index][1] = arr[0];
+  arrList[index][2] = arr[1];
+  arrList[index][3] = arr[2];
+  arrList[index][4] = arr[3];
+  // arrList[index][5] = arr[4];
+  console.log(arrList[index][5]);
+  console.log(arr[4]);
+
+  if (status === 0) {
+    localStorage.setItem("startArr", JSON.stringify(arrList));
+  } else {
+    console.log("eee");
+  }
+
+  updateCards();
+}
+
+// Helper function to delete the selected card
+function deleteCard(index) {}
 
 // Add card to different columns based on category
 function addCard(arr, status) {
@@ -257,5 +315,3 @@ function clearInput() {
   document.getElementById("assignedPPL").value = "";
   document.getElementById("status").value = "to-start";
 }
-
-function changeCardInfo(arr) {}
