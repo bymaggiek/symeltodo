@@ -3,6 +3,8 @@ body {
   padding: 0;
   box-sizing: border-box;
   background-color: white;
+  max-height: 100vh;
+  overflow: auto;
 }
 
 /* Nav section */
@@ -84,6 +86,7 @@ body {
   letter-spacing: 0.5rem;
   text-align: center;
   padding: 1rem;
+  display: block;
 }
 .container > form > .btn:hover {
   background-color: rgb(71, 71, 71);
@@ -117,12 +120,14 @@ body {
   border: none;
   color: white;
   transition: 0.3s;
+  display: block;
 }
 .additionalBtns > button:hover {
   letter-spacing: 0.4rem;
 }
 .resetBtn {
   background-color: rgb(151, 206, 164);
+  cursor: pointer;
 }
 .resetBtn:hover {
   background-color: rgb(91, 202, 119);
@@ -130,6 +135,7 @@ body {
 }
 .deleteBtn {
   background-color: rgb(194, 127, 127);
+  cursor: pointer;
 }
 .deleteBtn:hover {
   background-color: rgb(255, 104, 104);
@@ -166,7 +172,7 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   max-height: 65vh;
   overflow: auto;
   background-color: rgb(163, 163, 163);
@@ -239,8 +245,7 @@ body {
 /* completed section */
 .complete {
   height: auto;
-  margin-top: 2rem;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   background-color: rgb(163, 163, 163);
@@ -286,6 +291,9 @@ footer {
 @media screen and (max-width: 700px) {
   .main-column {
     margin-top: 2rem;
+  }
+  .main-column:last-child {
+    margin-bottom: 10rem;
   }
   .addCardSection {
     flex-direction: column;

@@ -31,7 +31,8 @@
           type="button"
           class="btn btn-primary addCard"
           data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
+          data-bs-target="#modal"
+          id="addCardForm"
         >
           Add a Task
         </button>
@@ -42,9 +43,9 @@
     <!-- Start the add-card form -->
     <div
       class="modal fade"
-      id="exampleModal"
+      id="modal"
       tabindex="-1"
-      aria-labelledby="exampleModalLabel"
+      aria-labelledby="addCardForm"
       aria-hidden="true"
     >
       <div class="modal-dialog">
@@ -129,10 +130,10 @@
               </div>
 
               <!-- Button -->
-              <button id="saveBtn" class="btn">SAVE</button>
+              <button id="saveBtn" class="btn" type="button">CREATE</button>
               <div class="additionalBtns">
-                <button id="resetBtn" class="resetBtn">reset</button>
-                <button id="deleteBtn" class="deleteBtn">delete</button>
+                <button class="resetBtn" id="resetBtn">reset</button>
+                <button class="deleteBtn" id="deleteBtn">delete</button>
               </div>
             </form>
           </div>
