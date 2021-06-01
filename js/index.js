@@ -24,7 +24,7 @@ const inProgressArr = JSON.parse(localStorage.getItem("inProgressArr"))
 const inReviewArr = JSON.parse(localStorage.getItem("inReviewArr"))
   ? JSON.parse(localStorage.getItem("inReviewArr"))
   : [];
-const completedArr = JSON.parse(localStorage.getItem("completeArr"))
+const completeArr = JSON.parse(localStorage.getItem("completeArr"))
   ? JSON.parse(localStorage.getItem("completeArr"))
   : [];
 
@@ -46,8 +46,8 @@ function updateCards() {
       addCard(arr, "in-review");
     });
   }
-  if (completedArr) {
-    completedArr.forEach((arr) => {
+  if (completeArr) {
+    completeArr.forEach((arr) => {
       addCard(arr, "complete");
     });
   }
@@ -128,15 +128,15 @@ saveBtn.addEventListener("click", () => {
 
       case "complete":
         const completeSub = [
-          completedArr.length,
+          completeArr.length,
           taskName.value,
           description.value,
           dueDate.value,
           assignedPPL.value,
           3,
         ];
-        completedArr.push(completeSub);
-        localStorage.setItem("completeArr", JSON.stringify(completedArr));
+        completeArr.push(completeSub);
+        localStorage.setItem("completeArr", JSON.stringify(completeArr));
         addCard(completeSub, "complete");
         addCard.called ? clearInput() : console.log("finish the card first");
         break;
@@ -159,51 +159,48 @@ function resetBtnTrigger(index, status) {
 
   if (status === 0) {
     document.getElementById("status").value = "to-start";
-    const triggeredArrList = JSON.parse(localStorage.getItem("startArr"));
-    const targetArray = triggerInfo(triggeredArrList, index);
-    console.log(triggeredArrList);
-    console.log(targetArray);
+    triggerInfo(startArr, index);
 
     resetBtn.addEventListener("click", () => {
-      changeInfo(triggeredArrList, targetArray, index, status);
+      changeInfo(startArr, index);
     });
 
-    // deleteBtn.addEventListener("click", () => {
-
-    // });
+    deleteBtn.addEventListener("click", () => {
+      deleteCard(startArr, index);
+    });
   } else if (status === 1) {
     document.getElementById("status").value = "in-progress";
-    const triggeredArr = JSON.parse(localStorage.getItem("inProgressArr"));
-    const targetArray = triggerInfo(triggeredArr, index);
-    // resetBtn.addEventListener("click", () => {
-    //   console.log(targetArray);
-    // });
+    triggerInfo(inProgressArr, index);
 
-    // deleteBtn.addEventListener("click", () => {
+    resetBtn.addEventListener("click", () => {
+      changeInfo(inProgressArr, index);
+    });
 
-    // });
+    deleteBtn.addEventListener("click", () => {
+      deleteCard(inProgressArr, index);
+    });
   } else if (status === 2) {
     document.getElementById("status").value = "in-review";
-    const triggeredArr = JSON.parse(localStorage.getItem("inReviewArr"));
-    const targetArray = triggerInfo(triggeredArr, index);
-    // resetBtn.addEventListener("click", () => {
-    //   console.log(targetArray);
-    // });
+    triggerInfo(inReviewArr, index);
 
-    // deleteBtn.addEventListener("click", () => {
+    resetBtn.addEventListener("click", () => {
+      changeInfo(inReviewArr, index);
+    });
 
-    // });
+    deleteBtn.addEventListener("click", () => {
+      deleteCard(inReviewArr, index);
+    });
   } else if (status === 3) {
     document.getElementById("status").value = "complete";
-    const triggeredArr = JSON.parse(localStorage.getItem("completedArr"));
-    const targetArray = triggerInfo(triggeredArr, index);
-    // resetBtn.addEventListener("click", () => {
-    //   console.log(targetArray);
-    // });
+    triggerInfo(completeArr, index);
 
-    // deleteBtn.addEventListener("click", () => {
+    resetBtn.addEventListener("click", () => {
+      changeInfo(completeArr, index);
+    });
 
-    // });
+    deleteBtn.addEventListener("click", () => {
+      deleteCard(completeArr, index);
+    });
   } else {
     try {
       document.getElementById("status").value = "to-start";
@@ -218,23 +215,23 @@ function triggerInfo(arr, index) {
   description.value = arr[index][2];
   dueDate.value = arr[index][3];
   assignedPPL.value = arr[index][4];
-  // for (a in arr) {
-  //   if (arr[index][5] === 0) {
-  //     status.value = "to-start";
-  //   } else if (arr[index][5] === 1) {
-  //     status.value = "in-progress";
-  //   } else if (arr[index][5] === 2) {
-  //     status.value = "in-review";
-  //   } else if (arr[index][5] === 3) {
-  //     status.value = "complete";
-  //   } else {
-  //     try {
-  //       status.value = "to-start";
-  //     } catch (e) {
-  //       console.log(e);
-  //     }
-  //   }
-  // }
+  for (a in arr) {
+    if (arr[index][5] === 0) {
+      status.value = "to-start";
+    } else if (arr[index][5] === 1) {
+      status.value = "in-progress";
+    } else if (arr[index][5] === 2) {
+      status.value = "in-review";
+    } else if (arr[index][5] === 3) {
+      status.value = "complete";
+    } else {
+      try {
+        status.value = "to-start";
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  }
   return [
     taskName.value,
     description.value,
@@ -246,29 +243,313 @@ function triggerInfo(arr, index) {
 
 // Helper function to change the data from the selected card
 // arrList is the LocalStorage List;
-// arr is the selected list from specific column
 // index is the index number of arr in arrList
-// status is used to check if status reset to different on from origin
-function changeInfo(arrList, arr, index, status) {
-  arrList[index][1] = arr[0];
-  arrList[index][2] = arr[1];
-  arrList[index][3] = arr[2];
-  arrList[index][4] = arr[3];
-  // arrList[index][5] = arr[4];
-  console.log(arrList[index][5]);
-  console.log(arr[4]);
+function changeInfo(arrList, index) {
+  arrList[index][1] = taskName.value;
+  arrList[index][2] = description.value;
+  arrList[index][3] = dueDate.value;
+  arrList[index][4] = assignedPPL.value;
 
-  if (status === 0) {
-    localStorage.setItem("startArr", JSON.stringify(arrList));
+  if (arrList[index][5] === 0) {
+    if (status.value === "to-start") {
+      localStorage.setItem("startArr", JSON.stringify(arrList));
+    } else if (status.value === "in-progress") {
+      const newArr = [
+        inProgressArr.length > 0
+          ? inProgressArr[inProgressArr.length - 1][0] + 1
+          : 0,
+        arrList[index][1],
+        arrList[index][2],
+        arrList[index][3],
+        arrList[index][4],
+        1,
+      ];
+      inProgressArr.push(newArr);
+      startArr.splice(index, 1);
+      startArr.forEach((arr) => {
+        arr[0] = startArr.indexOf(arr);
+      });
+      localStorage.setItem("startArr", JSON.stringify(startArr));
+      localStorage.setItem("inProgressArr", JSON.stringify(inProgressArr));
+    } else if (status.value === "in-review") {
+      const newArr = [
+        inReviewArr.length > 0 ? inReviewArr[inReviewArr.length - 1][0] + 1 : 0,
+        arrList[index][1],
+        arrList[index][2],
+        arrList[index][3],
+        arrList[index][4],
+        2,
+      ];
+      inReviewArr.push(newArr);
+      startArr.splice(index, 1);
+      startArr.forEach((arr) => {
+        arr[0] = startArr.indexOf(arr);
+      });
+      localStorage.setItem("startArr", JSON.stringify(startArr));
+      localStorage.setItem("inReviewArr", JSON.stringify(inReviewArr));
+    } else if (status.value === "complete") {
+      const newArr = [
+        completeArr.length > 0 ? completeArr[completeArr.length - 1][0] + 1 : 0,
+        arrList[index][1],
+        arrList[index][2],
+        arrList[index][3],
+        arrList[index][4],
+        3,
+      ];
+      completeArr.push(newArr);
+      startArr.splice(index, 1);
+      startArr.forEach((arr) => {
+        arr[0] = startArr.indexOf(arr);
+      });
+      localStorage.setItem("startArr", JSON.stringify(startArr));
+      localStorage.setItem("completeArr", JSON.stringify(completeArr));
+    } else {
+      try {
+        console.log(
+          "something goes wrong with the status, please try again later"
+        );
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  } else if (arrList[index][5] === 1) {
+    if (status.value === "in-progress") {
+      localStorage.setItem("inProgressArr", JSON.stringify(arrList));
+    } else if (status.value === "to-start") {
+      const newArr = [
+        startArr.length > 0 ? startArr[startArr.length - 1][0] + 1 : 0,
+        taskName.value,
+        description.value,
+        dueDate.value,
+        assignedPPL.value,
+        0,
+      ];
+      startArr.push(newArr);
+      inProgressArr.splice(index, 1);
+      inProgressArr.forEach((arr) => {
+        arr[0] = inProgressArr.indexOf(arr);
+      });
+      localStorage.setItem("inProgressArr", JSON.stringify(inProgressArr));
+      localStorage.setItem("startArr", JSON.stringify(startArr));
+    } else if (status.value === "in-review") {
+      const newArr = [
+        inReviewArr.length > 0 ? inReviewArr[inReviewArr.length - 1][0] + 1 : 0,
+        arrList[index][1],
+        arrList[index][2],
+        arrList[index][3],
+        arrList[index][4],
+        2,
+      ];
+      inReviewArr.push(newArr);
+      inProgressArr.splice(index, 1);
+      inProgressArr.forEach((arr) => {
+        arr[0] = inProgressArr.indexOf(arr);
+      });
+      localStorage.setItem("inProgressArr", JSON.stringify(inProgressArr));
+      localStorage.setItem("inReviewArr", JSON.stringify(inReviewArr));
+    } else if (status.value === "complete") {
+      const newArr = [
+        completeArr.length > 0 ? completeArr[completeArr.length - 1][0] + 1 : 0,
+        arrList[index][1],
+        arrList[index][2],
+        arrList[index][3],
+        arrList[index][4],
+        3,
+      ];
+      completeArr.push(newArr);
+      inProgressArr.splice(index, 1);
+      inProgressArr.forEach((arr) => {
+        arr[0] = inProgressArr.indexOf(arr);
+      });
+      localStorage.setItem("inProgressArr", JSON.stringify(inProgressArr));
+      localStorage.setItem("completeArr", JSON.stringify(completeArr));
+    } else {
+      try {
+        console.log(
+          "something goes wrong with the status, please try again later"
+        );
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  } else if (arrList[index][5] === 2) {
+    if (status.value === "in-review") {
+      localStorage.setItem("inReviewArr", JSON.stringify(arrList));
+    } else if (status.value === "to-start") {
+      const newArr = [
+        startArr.length > 0 ? startArr[startArr.length - 1][0] + 1 : 0,
+        arrList[index][1],
+        arrList[index][2],
+        arrList[index][3],
+        arrList[index][4],
+        0,
+      ];
+      startArr.push(newArr);
+      inReviewArr.splice(index, 1);
+      inReviewArr.forEach((arr) => {
+        arr[0] = inReviewArr.indexOf(arr);
+      });
+      localStorage.setItem("inReviewArr", JSON.stringify(inReviewArr));
+      localStorage.setItem("startArr", JSON.stringify(startArr));
+    } else if (status.value === "in-progress") {
+      const newArr = [
+        inProgressArr.length > 0
+          ? inProgressArr[inProgressArr.length - 1][0] + 1
+          : 0,
+        arrList[index][1],
+        arrList[index][2],
+        arrList[index][3],
+        arrList[index][4],
+        1,
+      ];
+      inProgressArr.push(newArr);
+      inReviewArr.splice(index, 1);
+      inReviewArr.forEach((arr) => {
+        arr[0] = inReviewArr.indexOf(arr);
+      });
+      localStorage.setItem("inReviewArr", JSON.stringify(inReviewArr));
+      localStorage.setItem("inProgressArr", JSON.stringify(inProgressArr));
+    } else if (status.value === "complete") {
+      const newArr = [
+        completeArr.length > 0 ? completeArr[completeArr.length - 1][0] + 1 : 0,
+        arrList[index][1],
+        arrList[index][2],
+        arrList[index][3],
+        arrList[index][4],
+        3,
+      ];
+      completeArr.push(newArr);
+      inReviewArr.splice(index, 1);
+      inReviewArr.forEach((arr) => {
+        arr[0] = inReviewArr.indexOf(arr);
+      });
+      localStorage.setItem("inReviewArr", JSON.stringify(inReviewArr));
+      localStorage.setItem("completeArr", JSON.stringify(completeArr));
+    } else {
+      try {
+        console.log(
+          "something goes wrong with the status, please try again later"
+        );
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  } else if (arrList[index][5] === 3) {
+    if (status.value === "complete") {
+      localStorage.setItem("completeArr", JSON.stringify(arrList));
+    } else if (status.value === "to-start") {
+      const newArr = [
+        startArr.length > 0 ? startArr[startArr.length - 1][0] + 1 : 0,
+        arrList[index][1],
+        arrList[index][2],
+        arrList[index][3],
+        arrList[index][4],
+        0,
+      ];
+      startArr.push(newArr);
+      completeArr.splice(index, 1);
+      completeArr.forEach((arr) => {
+        arr[0] = completeArr.indexOf(arr);
+      });
+      localStorage.setItem("completeArr", JSON.stringify(completeArr));
+      localStorage.setItem("startArr", JSON.stringify(startArr));
+    } else if (status.value === "in-progress") {
+      const newArr = [
+        inProgressArr.length > 0
+          ? inProgressArr[inProgressArr.length - 1][0] + 1
+          : 0,
+        arrList[index][1],
+        arrList[index][2],
+        arrList[index][3],
+        arrList[index][4],
+        1,
+      ];
+      inProgressArr.push(newArr);
+      completeArr.splice(index, 1);
+      completeArr.forEach((arr) => {
+        arr[0] = completeArr.indexOf(arr);
+      });
+      localStorage.setItem("completeArr", JSON.stringify(completeArr));
+      localStorage.setItem("inProgressArr", JSON.stringify(inProgressArr));
+    } else if (status.value === "in-review") {
+      const newArr = [
+        inReviewArr.length > 0 ? inReviewArr[inReviewArr.length - 1][0] + 1 : 0,
+        arrList[index][1],
+        arrList[index][2],
+        arrList[index][3],
+        arrList[index][4],
+        2,
+      ];
+      inReviewArr.push(newArr);
+      completeArr.splice(index, 1);
+      completeArr.forEach((arr) => {
+        arr[0] = completeArr.indexOf(arr);
+      });
+      localStorage.setItem("completeArr", JSON.stringify(completeArr));
+      localStorage.setItem("inReviewArr", JSON.stringify(inReviewArr));
+    } else {
+      try {
+        console.log(
+          "something goes wrong with the status, please try again later"
+        );
+      } catch (e) {
+        console.log(e);
+      }
+    }
   } else {
-    console.log("eee");
+    try {
+      console.log("Invalid status input, please try again");
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   updateCards();
 }
 
 // Helper function to delete the selected card
-function deleteCard(index) {}
+function deleteCard(arrList, index) {
+  switch (arrList[index][5]) {
+    case 0:
+      startArr.splice(index, 1);
+      startArr.forEach((arr) => {
+        arr[0] = startArr.indexOf(arr);
+      });
+      localStorage.setItem("startArr", JSON.stringify(startArr));
+      break;
+    case 1:
+      inProgressArr.splice(index, 1);
+      inProgressArr.forEach((arr) => {
+        arr[0] = inProgressArr.indexOf(arr);
+      });
+      localStorage.setItem("inProgressArr", JSON.stringify(inProgressArr));
+      break;
+    case 2:
+      inReviewArr.splice(index, 1);
+      inReviewArr.forEach((arr) => {
+        arr[0] = inReviewArr.indexOf(arr);
+      });
+      localStorage.setItem("inReviewArr", JSON.stringify(inReviewArr));
+      break;
+    case 3:
+      completeArr.splice(index, 1);
+      completeArr.forEach((arr) => {
+        arr[0] = completeArr.indexOf(arr);
+      });
+      localStorage.setItem("completeArr", JSON.stringify(completeArr));
+      break;
+    default:
+      try {
+        console.log(
+          "cannot be able to delete this card, please check on line 543;"
+        );
+      } catch (e) {
+        console.log(e);
+      }
+  }
+
+  updateCards();
+}
 
 // Add card to different columns based on category
 function addCard(arr, status) {
