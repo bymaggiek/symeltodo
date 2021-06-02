@@ -107,62 +107,44 @@ completeBtn.addEventListener("click", () => {
 
 // Save data as nested array under different categories - toStart, inProgress, inReview and Completed
 saveBtn.addEventListener("click", () => {
+  const obj = new TaskManager(
+    taskName.value,
+    description.value,
+    dueDate.value,
+    assignedPPL.value
+  );
   if (taskName.value && dueDate.value && assignedPPL.value) {
     switch (status.value) {
       case "to-start":
-        const startObj = new TaskManager(
-          taskName.value,
-          description.value,
-          dueDate.value,
-          assignedPPL.value,
-          status.value
-        );
-        startArr.push(startObj);
-        startObj.id = startArr.length > 0 ? startArr.length : 1;
-        localStorage.setItem("startArr", JSON.stringify(startArr));
-        addCard(startObj);
+        startArr.push(obj);
+        obj.status = "to-start";
+        obj.id = startArr.length > 0 ? startArr.length : 1;
+        addCard(obj);
+        updateLS();
         clearInput();
         break;
       case "in-progress":
-        const progressObj = new TaskManager(
-          taskName.value,
-          description.value,
-          dueDate.value,
-          assignedPPL.value,
-          status.value
-        );
-        inProgressArr.push(progressObj);
-        progressObj.id = inProgressArr.length > 0 ? inProgressArr.length : 1;
-        localStorage.setItem("inProgressArr", JSON.stringify(inProgressArr));
-        addCard(progressObj);
+        inProgressArr.push(obj);
+        obj.status = "in-progress";
+        obj.id = inProgressArr.length > 0 ? inProgressArr.length : 1;
+        addCard(obj);
+        updateLS();
         clearInput();
         break;
       case "in-review":
-        const reviewObj = new TaskManager(
-          taskName.value,
-          description.value,
-          dueDate.value,
-          assignedPPL.value,
-          status.value
-        );
-        inReviewArr.push(reviewObj);
-        reviewObj.id = inReviewArr.length > 0 ? inReviewArr.length : 1;
-        localStorage.setItem("inReviewArr", JSON.stringify(inReviewArr));
-        addCard(reviewObj);
+        inReviewArr.push(obj);
+        obj.status = "in-review";
+        obj.id = inReviewArr.length > 0 ? inReviewArr.length : 1;
+        addCard(obj);
+        updateLS();
         clearInput();
         break;
       case "complete":
-        const completeObj = new TaskManager(
-          taskName.value,
-          description.value,
-          dueDate.value,
-          assignedPPL.value,
-          status.value
-        );
-        completeArr.push(completeObj);
-        completeObj.id = completeArr.length > 0 ? completeArr.length : 1;
-        localStorage.setItem("completeArr", JSON.stringify(completeArr));
-        addCard(completeObj);
+        completeArr.push(obj);
+        obj.status = "complete";
+        obj.id = completeArr.length > 0 ? completeArr.length : 1;
+        addCard(obj);
+        updateLS();
         clearInput();
         break;
       default:
