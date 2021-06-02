@@ -88,6 +88,13 @@ addTaskBtn.addEventListener("click", () => {
   deleteBtn.style.display = "none";
   saveBtn.style.display = "block";
   doneBtn.style.display = "none";
+  taskName.disabled = false;
+  description.disabled = false;
+  dueDate.disabled = false;
+  assignedPPL.disabled = false;
+  statusLabel.style.display = "block";
+  status.style.display = "block";
+
   clearInput();
 });
 
@@ -225,14 +232,13 @@ function addCard(obj) {
 }
 
 // Show "reset" and "delete" buttons and Hide "create" button
-function resetBtnTrigger(index, Status) {
+function resetBtnTrigger(index, status) {
   resetBtn.style.display = "block";
   deleteBtn.style.display = "block";
   saveBtn.style.display = "none";
 
-  if (Status === 0) {
-    toggleCompletedDisplay(Status);
-    document.getElementById("status").value = "to-start";
+  if (status === 0) {
+    toggleCompletedDisplay(status);
     triggerInfo(startArr, index);
 
     resetBtn.addEventListener("click", () => {
@@ -246,9 +252,8 @@ function resetBtnTrigger(index, Status) {
     doneBtn.addEventListener("click", () => {
       cardDone(startArr, index);
     });
-  } else if (Status === 1) {
-    toggleCompletedDisplay(Status);
-    document.getElementById("status").value = "in-progress";
+  } else if (status === 1) {
+    toggleCompletedDisplay(status);
     triggerInfo(inProgressArr, index);
 
     resetBtn.addEventListener("click", () => {
@@ -262,9 +267,8 @@ function resetBtnTrigger(index, Status) {
     doneBtn.addEventListener("click", () => {
       cardDone(inProgressArr, index);
     });
-  } else if (Status === 2) {
-    toggleCompletedDisplay(Status);
-    document.getElementById("status").value = "in-review";
+  } else if (status === 2) {
+    toggleCompletedDisplay(status);
     triggerInfo(inReviewArr, index);
 
     resetBtn.addEventListener("click", () => {
@@ -278,9 +282,8 @@ function resetBtnTrigger(index, Status) {
     doneBtn.addEventListener("click", () => {
       cardDone(inReviewArr, index);
     });
-  } else if (Status === 3) {
-    toggleCompletedDisplay(Status);
-    document.getElementById("status").value = "complete";
+  } else if (status === 3) {
+    toggleCompletedDisplay(status);
     triggerInfo(completeArr, index);
 
     deleteBtn.addEventListener("click", () => {
@@ -329,13 +332,7 @@ function triggerInfo(arr, index) {
   description.value = arr[index - 1]._description;
   dueDate.value = arr[index - 1]._dueDate;
   assignedPPL.value = arr[index - 1]._assignedTo;
-  return [
-    taskName.value,
-    description.value,
-    dueDate.value,
-    assignedPPL.value,
-    status.value,
-  ];
+  status.value = arr[index - 1]._status;
 }
 
 // Helper function to change the data from the selected card
@@ -547,8 +544,8 @@ function updateLS() {
 }
 
 // Change style of reset and delete button, as well as form disabled when card change into complete status
-function toggleCompletedDisplay(Status) {
-  if (Status === 3 || Status === "complete") {
+function toggleCompletedDisplay(currentStatus) {
+  if (currentStatus === 3 || currentStatus === "complete") {
     resetBtn.style.display = "none";
     deleteBtn.style.width = "100%";
     doneBtn.style.display = "none";
