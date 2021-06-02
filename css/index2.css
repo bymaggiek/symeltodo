@@ -98,14 +98,6 @@ body {
 .dateDiv {
   position: relative;
 }
-.dateDiv > input {
-  padding-left: 30px;
-}
-.dateDiv > i {
-  position: absolute;
-  left: 10px;
-  top: 44px;
-}
 .additionalBtns {
   /* display: none; */
   display: flex;

@@ -108,13 +108,18 @@ completeBtn.addEventListener("click", () => {
 
 // Save data as nested array under different categories - toStart, inProgress, inReview and Completed
 saveBtn.addEventListener("click", () => {
-  const obj = new TaskManager(
-    taskName.value,
-    description.value,
-    dueDate.value,
-    assignedPPL.value
-  );
-  if (taskName.value && dueDate.value && assignedPPL.value) {
+  if (
+    taskName.value &&
+    dueDate.value &&
+    assignedPPL.value &&
+    checkDateValidation(dueDate)
+  ) {
+    const obj = new TaskManager(
+      taskName.value,
+      description.value,
+      dueDate.value,
+      assignedPPL.value
+    );
     switch (status.value) {
       case "to-start":
         startArr.push(obj);
@@ -155,6 +160,16 @@ saveBtn.addEventListener("click", () => {
           console.log(e);
         }
     }
+  } else if (taskName.value === "") {
+    alert("Please enter the task name :)");
+  } else if (dueDate.value === "") {
+    alert("Pease choose a due date for this card :)");
+  } else if (assignedPPL.value === "") {
+    alert("Please assign this task to someone :)");
+  } else if (!checkDateValidation(dueDate)) {
+    alert("Please choose a valid due date");
+  } else {
+    alert("Please enter the required information to complete this card");
   }
 });
 
@@ -339,103 +354,130 @@ function changeInfo(arrList, index) {
     arrList[index - 1]._assignedTo
   );
 
-  // Card status used to be toStart
-  if (arrList[index - 1]._status === "to-start") {
-    if (status.value === "to-start") {
-      updateLS();
-    } else if (status.value === "in-progress") {
-      obj._id = inProgressArr.length > 0 ? inProgressArr.length : 1;
-      obj._status = "in-progress";
-      inProgressArr.push(obj);
-      deleteCard(arrList, index);
-      updateLS();
-    } else if (status.value === "in-review") {
-      obj._id = inReviewArr.length > 0 ? inReviewArr.length : 1;
-      obj._status = "in-review";
-      inReviewArr.push(obj);
-      deleteCard(arrList, index);
-      updateLS();
-    } else if (status.value === "complete") {
-      obj._id = completeArr.length > 0 ? completeArr.length : 1;
-      obj._status = "complete";
-      completeArr.push(obj);
-      deleteCard(arrList, index);
-      updateLS();
-    } else {
-      try {
-        console.log(
-          "something goes wrong with the status, please try again later"
-        );
-      } catch (e) {
-        console.log(e);
+  // Check if taskName, dueDate and assignedPPL values are valid when try to reset card
+  if (
+    taskName.value &&
+    dueDate.value &&
+    assignedPPL.value &&
+    checkDateValidation(dueDate)
+  ) {
+    // Card status used to be toStart
+    if (arrList[index - 1]._status === "to-start") {
+      if (status.value === "to-start") {
+        updateLS();
+      } else if (status.value === "in-progress") {
+        obj._id = inProgressArr.length > 0 ? inProgressArr.length : 1;
+        obj._status = "in-progress";
+        inProgressArr.push(obj);
+        deleteCard(arrList, index);
+        addCard(obj);
+        updateLS();
+      } else if (status.value === "in-review") {
+        obj._id = inReviewArr.length > 0 ? inReviewArr.length : 1;
+        obj._status = "in-review";
+        inReviewArr.push(obj);
+        deleteCard(arrList, index);
+        addCard(obj);
+        updateLS();
+      } else if (status.value === "complete") {
+        obj._id = completeArr.length > 0 ? completeArr.length : 1;
+        obj._status = "complete";
+        completeArr.push(obj);
+        deleteCard(arrList, index);
+        addCard(obj);
+        updateLS();
+      } else {
+        try {
+          console.log(
+            "something goes wrong with the status, please try again later"
+          );
+        } catch (e) {
+          console.log(e);
+        }
       }
     }
-  }
 
-  // Card status used to be inProgress
-  if (arrList[index - 1]._status === "in-progress") {
-    if (status.value === "in-progress") {
-      updateLS();
-    } else if (status.value === "to-start") {
-      obj._id = startArr.length > 0 ? startArr.length : 1;
-      obj._status = "to-start";
-      startArr.push(obj);
-      deleteCard(arrList, index);
-      updateLS();
-    } else if (status.value === "in-review") {
-      obj._id = inReviewArr.length > 0 ? inReviewArr.length : 1;
-      obj._status = "in-review";
-      inReviewArr.push(obj);
-      deleteCard(arrList, index);
-      updateLS();
-    } else if (status.value === "complete") {
-      obj._id = completeArr.length > 0 ? completeArr.length : 1;
-      obj._status = "complete";
-      completeArr.push(obj);
-      deleteCard(arrList, index);
-      updateLS();
-    } else {
-      try {
-        console.log(
-          "something goes wrong with the status, please try again later"
-        );
-      } catch (e) {
-        console.log(e);
+    // Card status used to be inProgress
+    if (arrList[index - 1]._status === "in-progress") {
+      if (status.value === "in-progress") {
+        updateLS();
+      } else if (status.value === "to-start") {
+        obj._id = startArr.length > 0 ? startArr.length : 1;
+        obj._status = "to-start";
+        startArr.push(obj);
+        deleteCard(arrList, index);
+        addCard(obj);
+        updateLS();
+      } else if (status.value === "in-review") {
+        obj._id = inReviewArr.length > 0 ? inReviewArr.length : 1;
+        obj._status = "in-review";
+        inReviewArr.push(obj);
+        deleteCard(arrList, index);
+        addCard(obj);
+        updateLS();
+      } else if (status.value === "complete") {
+        obj._id = completeArr.length > 0 ? completeArr.length : 1;
+        obj._status = "complete";
+        completeArr.push(obj);
+        deleteCard(arrList, index);
+        addCard(obj);
+        updateLS();
+      } else {
+        try {
+          console.log(
+            "something goes wrong with the status, please try again later"
+          );
+        } catch (e) {
+          console.log(e);
+        }
       }
     }
-  }
 
-  // Card status used to be inReview
-  if (arrList[index - 1]._status === "in-review") {
-    if (status.value === "in-review") {
-      updateLS();
-    } else if (status.value === "to-start") {
-      obj._id = startArr.length > 0 ? startArr.length : 1;
-      obj._status = "to-start";
-      startArr.push(obj);
-      deleteCard(arrList, index);
-      updateLS();
-    } else if (status.value === "in-progress") {
-      obj._id = inProgressArr.length > 0 ? inProgressArr.length : 1;
-      obj._status = "in-progress";
-      inProgressArr.push(obj);
-      deleteCard(arrList, index);
-      updateLS();
-    } else if (status.value === "complete") {
-      obj._id = completeArr.length > 0 ? completeArr.length : 1;
-      obj._status = "complete";
-      completeArr.push(obj);
-      deleteCard(arrList, index);
-      updateLS();
-    } else {
-      try {
-        console.log(
-          "something goes wrong with the status, please try again later"
-        );
-      } catch (e) {
-        console.log(e);
+    // Card status used to be inReview
+    if (arrList[index - 1]._status === "in-review") {
+      if (status.value === "in-review") {
+        updateLS();
+      } else if (status.value === "to-start") {
+        obj._id = startArr.length > 0 ? startArr.length : 1;
+        obj._status = "to-start";
+        startArr.push(obj);
+        deleteCard(arrList, index);
+        addCard(obj);
+        updateLS();
+      } else if (status.value === "in-progress") {
+        obj._id = inProgressArr.length > 0 ? inProgressArr.length : 1;
+        obj._status = "in-progress";
+        inProgressArr.push(obj);
+        deleteCard(arrList, index);
+        addCard(obj);
+        updateLS();
+      } else if (status.value === "complete") {
+        obj._id = completeArr.length > 0 ? completeArr.length : 1;
+        obj._status = "complete";
+        completeArr.push(obj);
+        deleteCard(arrList, index);
+        addCard(obj);
+        updateLS();
+      } else {
+        try {
+          console.log(
+            "something goes wrong with the status, please try again later"
+          );
+        } catch (e) {
+          console.log(e);
+        }
       }
     }
+  } else if (taskName.value === "") {
+    alert("Please enter the task name :)");
+  } else if (dueDate.value === "") {
+    alert("Pease choose a due date for this card :)");
+  } else if (!checkDateValidation(dueDate)) {
+    alert("Please choose a valid due date");
+  } else if (assignedPPL.value === "") {
+    alert("Please assign this task to someone :)");
+  } else {
+    alert("Please enter the required information to complete this card");
   }
 }
 
@@ -480,6 +522,7 @@ function deleteCard(arrList, index) {
       }
   }
 }
+
 // Helper function to mark selected card status to "done"
 function cardDone(arrList, index) {
   const obj = new TaskManager(
@@ -501,8 +544,6 @@ function updateLS() {
   localStorage.setItem("inProgressArr", JSON.stringify(inProgressArr));
   localStorage.setItem("inReviewArr", JSON.stringify(inReviewArr));
   localStorage.setItem("completeArr", JSON.stringify(completeArr));
-
-  render();
 }
 
 // Change style of reset and delete button, as well as form disabled when card change into complete status
@@ -528,5 +569,26 @@ function toggleCompletedDisplay(Status) {
     assignedPPL.disabled = false;
     statusLabel.style.display = "block";
     status.style.display = "block";
+  }
+}
+
+// Helper function to check due date is valid or not
+function checkDateValidation(dueDate) {
+  const dueDateYY = dueDate.value.slice(0, 4);
+  const dueDateMM = dueDate.value.slice(5, 7);
+  const dueDateDD = dueDate.value.slice(8, 10);
+  const currentDateYY = new Date().toISOString().slice(0, 4);
+  const currentDateMM = new Date().toISOString().slice(5, 7);
+  const currentDateDD = new Date().toISOString().slice(8, 10);
+
+  if (dueDateYY > currentDateYY) return true;
+  else if (dueDateYY < currentDateYY) return false;
+  else {
+    if (dueDateMM > currentDateMM) return true;
+    else if (dueDateMM < currentDateMM) return false;
+    else {
+      if (dueDateDD >= currentDateDD) return true;
+      else return false;
+    }
   }
 }
