@@ -8,6 +8,7 @@ const saveBtn = document.getElementById("saveBtn");
 const resetBtn = document.getElementById("resetBtn");
 const deleteBtn = document.getElementById("deleteBtn");
 const addTaskBtn = document.getElementById("addCardForm");
+const doneBtn = document.getElementById("doneBtn");
 
 const taskName = document.getElementById("taskName");
 const description = document.getElementById("description");
@@ -86,7 +87,7 @@ addTaskBtn.addEventListener("click", () => {
   resetBtn.style.display = "none";
   deleteBtn.style.display = "none";
   saveBtn.style.display = "block";
-  toggleCompletedDisplay();
+  doneBtn.style.display = "none";
   clearInput();
 });
 
@@ -226,6 +227,10 @@ function resetBtnTrigger(index, Status) {
     deleteBtn.addEventListener("click", () => {
       deleteCard(startArr, index);
     });
+
+    doneBtn.addEventListener("click", () => {
+      cardDone(startArr, index);
+    });
   } else if (Status === 1) {
     toggleCompletedDisplay(Status);
     document.getElementById("status").value = "in-progress";
@@ -237,6 +242,10 @@ function resetBtnTrigger(index, Status) {
 
     deleteBtn.addEventListener("click", () => {
       deleteCard(inProgressArr, index);
+    });
+
+    doneBtn.addEventListener("click", () => {
+      cardDone(inProgressArr, index);
     });
   } else if (Status === 2) {
     toggleCompletedDisplay(Status);
@@ -250,14 +259,14 @@ function resetBtnTrigger(index, Status) {
     deleteBtn.addEventListener("click", () => {
       deleteCard(inReviewArr, index);
     });
+
+    doneBtn.addEventListener("click", () => {
+      cardDone(inReviewArr, index);
+    });
   } else if (Status === 3) {
     toggleCompletedDisplay(Status);
     document.getElementById("status").value = "complete";
     triggerInfo(completeArr, index);
-
-    resetBtn.addEventListener("click", () => {
-      changeInfo(completeArr, index);
-    });
 
     deleteBtn.addEventListener("click", () => {
       deleteCard(completeArr, index);
@@ -428,41 +437,6 @@ function changeInfo(arrList, index) {
       }
     }
   }
-
-  // Card status used to be complete
-  if (arrList[index - 1]._status === "complete") {
-    if (status.value === "complete") {
-      updateLS();
-    } else if (status.value === "to-start") {
-      obj._id = startArr.length > 0 ? startArr.length : 1;
-      obj._status = "to-start";
-      startArr.push(obj);
-      deleteCard(arrList, index);
-      updateLS();
-    } else if (status.value === "in-progress") {
-      obj._id = inProgressArr.length > 0 ? inProgressArr.length : 1;
-      obj._status = "in-progress";
-      inProgressArr.push(obj);
-      deleteCard(arrList, index);
-      updateLS();
-    } else if (status.value === "in-review") {
-      obj._id = inReviewArr.length > 0 ? inReviewArr.length : 1;
-      obj._status = "in-review";
-      inReviewArr.push(obj);
-      deleteCard(arrList, index);
-      updateLS();
-    } else {
-      try {
-        console.log(
-          "something goes wrong with the status, please try again later"
-        );
-      } catch (e) {
-        console.log(e);
-      }
-    }
-  }
-
-  render();
 }
 
 // Helper function to delete the selected card
@@ -473,28 +447,28 @@ function deleteCard(arrList, index) {
       startArr.forEach((obj) => {
         obj._id = startArr.indexOf(obj) + 1;
       });
-      localStorage.setItem("startArr", JSON.stringify(startArr));
+      updateLS();
       break;
     case "in-progress":
       inProgressArr.splice(index - 1, 1);
       inProgressArr.forEach((obj) => {
         obj._id = inProgressArr.indexOf(obj) + 1;
       });
-      localStorage.setItem("inProgressArr", JSON.stringify(inProgressArr));
+      updateLS();
       break;
     case "in-review":
       inReviewArr.splice(index - 1, 1);
       inReviewArr.forEach((obj) => {
         obj._id = inReviewArr.indexOf(obj) + 1;
       });
-      localStorage.setItem("inReviewArr", JSON.stringify(inReviewArr));
+      updateLS();
       break;
     case "complete":
       completeArr.splice(index - 1, 1);
       completeArr.forEach((obj) => {
         obj._id = completeArr.indexOf(obj) + 1;
       });
-      localStorage.setItem("completeArr", JSON.stringify(completeArr));
+      updateLS();
       break;
     default:
       try {
@@ -505,8 +479,20 @@ function deleteCard(arrList, index) {
         console.log(e);
       }
   }
-
-  render();
+}
+// Helper function to mark selected card status to "done"
+function cardDone(arrList, index) {
+  const obj = new TaskManager(
+    arrList[index - 1]._name,
+    arrList[index - 1]._description,
+    arrList[index - 1]._dueDate,
+    arrList[index - 1]._assignedTo
+  );
+  obj._id = completeArr.length > 0 ? completeArr.length : 1;
+  obj._status = "complete";
+  completeArr.push(obj);
+  deleteCard(arrList, index);
+  updateLS();
 }
 
 // Helper function to update local storage
@@ -515,6 +501,8 @@ function updateLS() {
   localStorage.setItem("inProgressArr", JSON.stringify(inProgressArr));
   localStorage.setItem("inReviewArr", JSON.stringify(inReviewArr));
   localStorage.setItem("completeArr", JSON.stringify(completeArr));
+
+  render();
 }
 
 // Change style of reset and delete button, as well as form disabled when card change into complete status
@@ -522,6 +510,7 @@ function toggleCompletedDisplay(Status) {
   if (Status === 3 || Status === "complete") {
     resetBtn.style.display = "none";
     deleteBtn.style.width = "100%";
+    doneBtn.style.display = "none";
     taskName.disabled = true;
     description.disabled = true;
     dueDate.disabled = true;
@@ -531,6 +520,7 @@ function toggleCompletedDisplay(Status) {
   } else {
     resetBtn.style.display = "block";
     deleteBtn.style.display = "block";
+    doneBtn.style.display = "block";
     deleteBtn.style.width = "45%";
     taskName.disabled = false;
     description.disabled = false;
