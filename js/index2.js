@@ -129,33 +129,33 @@ saveBtn.addEventListener("click", () => {
     );
     switch (status.value) {
       case "to-start":
-        startArr.push(obj);
         obj.status = "to-start";
-        obj.id = startArr.length > 0 ? startArr.length : 1;
+        obj.id = startArr.length ? startArr.length : 0;
+        startArr.push(obj);
         addCard(obj);
         updateLS();
         clearInput();
         break;
       case "in-progress":
-        inProgressArr.push(obj);
         obj.status = "in-progress";
-        obj.id = inProgressArr.length > 0 ? inProgressArr.length : 1;
+        obj.id = inProgressArr.length ? inProgressArr.length : 0;
+        inProgressArr.push(obj);
         addCard(obj);
         updateLS();
         clearInput();
         break;
       case "in-review":
-        inReviewArr.push(obj);
         obj.status = "in-review";
-        obj.id = inReviewArr.length > 0 ? inReviewArr.length : 1;
+        obj.id = inReviewArr.length ? inReviewArr.length : 0;
+        inReviewArr.push(obj);
         addCard(obj);
         updateLS();
         clearInput();
         break;
       case "complete":
-        completeArr.push(obj);
         obj.status = "complete";
-        obj.id = completeArr.length > 0 ? completeArr.length : 1;
+        obj.id = completeArr.length ? completeArr.length : 0;
+        completeArr.push(obj);
         addCard(obj);
         updateLS();
         clearInput();
@@ -236,7 +236,6 @@ function resetBtnTrigger(index, status) {
   resetBtn.style.display = "block";
   deleteBtn.style.display = "block";
   saveBtn.style.display = "none";
-
   if (status === 0) {
     toggleCompletedDisplay(status);
     triggerInfo(startArr, index);
@@ -328,27 +327,27 @@ function render() {
 
 // Helper function to get specific array and its elements by arr[index]
 function triggerInfo(arr, index) {
-  taskName.value = arr[index - 1]._name;
-  description.value = arr[index - 1]._description;
-  dueDate.value = arr[index - 1]._dueDate;
-  assignedPPL.value = arr[index - 1]._assignedTo;
-  status.value = arr[index - 1]._status;
+  taskName.value = arr[index]._name;
+  description.value = arr[index]._description;
+  dueDate.value = arr[index]._dueDate;
+  assignedPPL.value = arr[index]._assignedTo;
+  status.value = arr[index]._status;
 }
 
 // Helper function to change the data from the selected card
 // arrList is the LocalStorage List;
 // index is the index number of arr in arrList
 function changeInfo(arrList, index) {
-  arrList[index - 1]._name = taskName.value;
-  arrList[index - 1]._description = description.value;
-  arrList[index - 1]._dueDate = dueDate.value;
-  arrList[index - 1]._assignedTo = assignedPPL.value;
+  arrList[index]._name = taskName.value;
+  arrList[index]._description = description.value;
+  arrList[index]._dueDate = dueDate.value;
+  arrList[index]._assignedTo = assignedPPL.value;
 
   const obj = new TaskManager(
-    arrList[index - 1]._name,
-    arrList[index - 1]._description,
-    arrList[index - 1]._dueDate,
-    arrList[index - 1]._assignedTo
+    arrList[index]._name,
+    arrList[index]._description,
+    arrList[index]._dueDate,
+    arrList[index]._assignedTo
   );
 
   // Check if taskName, dueDate and assignedPPL values are valid when try to reset card
@@ -359,25 +358,25 @@ function changeInfo(arrList, index) {
     checkDateValidation(dueDate)
   ) {
     // Card status used to be toStart
-    if (arrList[index - 1]._status === "to-start") {
+    if (arrList[index]._status === "to-start") {
       if (status.value === "to-start") {
         updateLS();
       } else if (status.value === "in-progress") {
-        obj._id = inProgressArr.length > 0 ? inProgressArr.length : 1;
+        obj._id = inProgressArr.length ? inProgressArr.length : 0;
         obj._status = "in-progress";
         inProgressArr.push(obj);
         deleteCard(arrList, index);
         addCard(obj);
         updateLS();
       } else if (status.value === "in-review") {
-        obj._id = inReviewArr.length > 0 ? inReviewArr.length : 1;
+        obj._id = inReviewArr.length ? inReviewArr.length : 0;
         obj._status = "in-review";
         inReviewArr.push(obj);
         deleteCard(arrList, index);
         addCard(obj);
         updateLS();
       } else if (status.value === "complete") {
-        obj._id = completeArr.length > 0 ? completeArr.length : 1;
+        obj._id = completeArr.length ? completeArr.length : 0;
         obj._status = "complete";
         completeArr.push(obj);
         deleteCard(arrList, index);
@@ -395,25 +394,25 @@ function changeInfo(arrList, index) {
     }
 
     // Card status used to be inProgress
-    if (arrList[index - 1]._status === "in-progress") {
+    if (arrList[index]._status === "in-progress") {
       if (status.value === "in-progress") {
         updateLS();
       } else if (status.value === "to-start") {
-        obj._id = startArr.length > 0 ? startArr.length : 1;
+        obj._id = startArr.length ? startArr.length : 0;
         obj._status = "to-start";
         startArr.push(obj);
         deleteCard(arrList, index);
         addCard(obj);
         updateLS();
       } else if (status.value === "in-review") {
-        obj._id = inReviewArr.length > 0 ? inReviewArr.length : 1;
+        obj._id = inReviewArr.length ? inReviewArr.length : 0;
         obj._status = "in-review";
         inReviewArr.push(obj);
         deleteCard(arrList, index);
         addCard(obj);
         updateLS();
       } else if (status.value === "complete") {
-        obj._id = completeArr.length > 0 ? completeArr.length : 1;
+        obj._id = completeArr.length ? completeArr.length : 0;
         obj._status = "complete";
         completeArr.push(obj);
         deleteCard(arrList, index);
@@ -431,25 +430,25 @@ function changeInfo(arrList, index) {
     }
 
     // Card status used to be inReview
-    if (arrList[index - 1]._status === "in-review") {
+    if (arrList[index]._status === "in-review") {
       if (status.value === "in-review") {
         updateLS();
       } else if (status.value === "to-start") {
-        obj._id = startArr.length > 0 ? startArr.length : 1;
+        obj._id = startArr.length ? startArr.length : 0;
         obj._status = "to-start";
         startArr.push(obj);
         deleteCard(arrList, index);
         addCard(obj);
         updateLS();
       } else if (status.value === "in-progress") {
-        obj._id = inProgressArr.length > 0 ? inProgressArr.length : 1;
+        obj._id = inProgressArr.length ? inProgressArr.length : 0;
         obj._status = "in-progress";
         inProgressArr.push(obj);
         deleteCard(arrList, index);
         addCard(obj);
         updateLS();
       } else if (status.value === "complete") {
-        obj._id = completeArr.length > 0 ? completeArr.length : 1;
+        obj._id = completeArr.length ? completeArr.length : 0;
         obj._status = "complete";
         completeArr.push(obj);
         deleteCard(arrList, index);
@@ -480,32 +479,32 @@ function changeInfo(arrList, index) {
 
 // Helper function to delete the selected card
 function deleteCard(arrList, index) {
-  switch (arrList[index - 1]._status) {
+  switch (arrList[index]._status) {
     case "to-start":
-      startArr.splice(index - 1, 1);
+      startArr.splice(index, 1);
       startArr.forEach((obj) => {
-        obj._id = startArr.indexOf(obj) + 1;
+        obj._id = startArr.indexOf(obj);
       });
       updateLS();
       break;
     case "in-progress":
-      inProgressArr.splice(index - 1, 1);
+      inProgressArr.splice(index, 1);
       inProgressArr.forEach((obj) => {
-        obj._id = inProgressArr.indexOf(obj) + 1;
+        obj._id = inProgressArr.indexOf(obj);
       });
       updateLS();
       break;
     case "in-review":
-      inReviewArr.splice(index - 1, 1);
+      inReviewArr.splice(index, 1);
       inReviewArr.forEach((obj) => {
-        obj._id = inReviewArr.indexOf(obj) + 1;
+        obj._id = inReviewArr.indexOf(obj);
       });
       updateLS();
       break;
     case "complete":
-      completeArr.splice(index - 1, 1);
+      completeArr.splice(index, 1);
       completeArr.forEach((obj) => {
-        obj._id = completeArr.indexOf(obj) + 1;
+        obj._id = completeArr.indexOf(obj);
       });
       updateLS();
       break;
@@ -523,12 +522,12 @@ function deleteCard(arrList, index) {
 // Helper function to mark selected card status to "done"
 function cardDone(arrList, index) {
   const obj = new TaskManager(
-    arrList[index - 1]._name,
-    arrList[index - 1]._description,
-    arrList[index - 1]._dueDate,
-    arrList[index - 1]._assignedTo
+    arrList[index]._name,
+    arrList[index]._description,
+    arrList[index]._dueDate,
+    arrList[index]._assignedTo
   );
-  obj._id = completeArr.length > 0 ? completeArr.length : 1;
+  obj._id = completeArr.length ? completeArr.length : 0;
   obj._status = "complete";
   completeArr.push(obj);
   deleteCard(arrList, index);
