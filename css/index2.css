@@ -3,6 +3,8 @@ body {
   padding: 0;
   box-sizing: border-box;
   background-color: white;
+  max-height: 100vh;
+  overflow: auto;
 }
 
 /* Nav section */
@@ -18,6 +20,7 @@ body {
 }
 .title > span {
   font-weight: 550;
+  cursor: default;
 }
 
 /* Add-card */
@@ -72,7 +75,8 @@ body {
   border: 1px solid rgb(163, 163, 163);
   font-size: 0.8em;
 }
-.container > form > .btn {
+.container > form > .btn,
+.doneBtn {
   width: 100%;
   cursor: pointer;
   font-size: 1.5em;
@@ -84,6 +88,7 @@ body {
   letter-spacing: 0.5rem;
   text-align: center;
   padding: 1rem;
+  display: block;
 }
 .container > form > .btn:hover {
   background-color: rgb(71, 71, 71);
@@ -92,14 +97,6 @@ body {
 }
 .dateDiv {
   position: relative;
-}
-.dateDiv > input {
-  padding-left: 30px;
-}
-.dateDiv > i {
-  position: absolute;
-  left: 10px;
-  top: 44px;
 }
 .additionalBtns {
   /* display: none; */
@@ -117,12 +114,14 @@ body {
   border: none;
   color: white;
   transition: 0.3s;
+  display: block;
 }
 .additionalBtns > button:hover {
   letter-spacing: 0.4rem;
 }
 .resetBtn {
   background-color: rgb(151, 206, 164);
+  cursor: pointer;
 }
 .resetBtn:hover {
   background-color: rgb(91, 202, 119);
@@ -130,10 +129,19 @@ body {
 }
 .deleteBtn {
   background-color: rgb(194, 127, 127);
+  cursor: pointer;
 }
 .deleteBtn:hover {
   background-color: rgb(255, 104, 104);
   transform: scale(1.1);
+}
+.doneBtn {
+  margin-top: 1rem;
+}
+.doneBtn:hover {
+  background-color: rgb(71, 71, 71);
+  letter-spacing: 0.8rem;
+  transform: scale(1.05);
 }
 
 /* main section */
@@ -148,6 +156,7 @@ body {
 /* to-start, in-progress, in-review */
 .main-column {
   width: 30%;
+  max-height: 68vh;
   min-width: 20rem;
   display: flex;
   flex-direction: column;
@@ -160,12 +169,13 @@ body {
   width: 100%;
   padding: 1rem;
   background-color: rgb(163, 163, 163);
+  cursor: default;
 }
 .card-display {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   max-height: 65vh;
   overflow: auto;
   background-color: rgb(163, 163, 163);
@@ -181,11 +191,11 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-.card-header > p,
+.card-title,
 .card-footer > p {
   margin: 0;
 }
-.card-header > p {
+.card-title {
   word-break: break-word;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -218,7 +228,7 @@ body {
   justify-content: space-between;
   padding: 0.3rem;
 }
-.card-footer > p:first-child {
+.card-assigned {
   width: 65%;
   height: 1.5rem;
   word-break: break-word;
@@ -228,7 +238,7 @@ body {
   -webkit-line-clamp: 1; /* number of lines to show */
   -webkit-box-orient: vertical;
 }
-.card-footer > p:last-child {
+.due-date {
   width: 35%;
   text-align: center;
 }
@@ -238,7 +248,9 @@ body {
 /* completed section */
 .complete {
   height: auto;
-  margin-top: 2rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   background-color: rgb(163, 163, 163);
   display: flex;
   flex-direction: column;
@@ -256,16 +268,16 @@ body {
   margin: 1rem;
 }
 .complete-column {
-  display: flex;
+  display: none;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
   max-height: 20rem;
   overflow: auto;
-  /* display: none; */
 }
 footer {
   margin: 1rem auto;
+  cursor: default;
 }
 /* .complete-column > .card {
   margin: 1.5rem;
@@ -283,6 +295,9 @@ footer {
 @media screen and (max-width: 700px) {
   .main-column {
     margin-top: 2rem;
+  }
+  .main-column:last-child {
+    margin-bottom: 10rem;
   }
   .addCardSection {
     flex-direction: column;
